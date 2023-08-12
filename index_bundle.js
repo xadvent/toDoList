@@ -16,7 +16,7 @@
   \*************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `\nhtml, body {\n    margin: 0px;\n    padding: 0px;\n    min-height: 100vh;\n    min-width: 100vw;\n}\n\n* {\n    padding: 0px;\n    margin: 0px;\n    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\na {\n    text-decoration: none;\n    color: white;\n}\nbutton {\n    width: 100%;\n}\n#page{\n    min-height: 100vh;\n    min-width: 100vw;\n    display: grid;\n    grid-template-rows: 150px 1fr ;\n    grid-template-columns: minmax(200px, 1fr) 4fr;\n}\n#header {\n    grid-row: 1;\n    grid-column: 1 / -1;\n    background-color: black;\n    display: grid;\n    grid-template-columns: minmax(200px, 1fr) 4fr;\n}\n#header h1 {\n    color: white;\n    align-self: center;\n    justify-self: center;\n    font-size: 40px;\n    cursor: default;\n    transition: all 1s;\n}\n#header h1:hover {\n    letter-spacing: 2px;\n}\n\n#top-logo {\n    background-color: black;\n    height: 80px;\n    width: 80px;\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n    grid-template-rows: 1fr 1fr;\n    align-self: center;\n    background-color: black;\n    justify-self: center;\n    gap: 10px;\n    transform: rotate(45deg);\n    transition: all  1.5s ease-in-out 0.2s;\n}\n#top-logo:hover {\n    transform: rotate(405deg);\n    gap: 2px;\n    scale: 0.8;\n    /* gap: 5px; */\n}\n.logo-bar {\n    background-color: white;\n}\n#one {\n    grid-row: 1;\n    grid-column: 1/ -2;\n}\n#four {\n    grid-column: span 2;\n}\n\n\n#sidebar {\n    grid-row: 2 / -1;\n    grid-column: 1;\n    display: flex;\n    flex-direction: column;\n    background-color: black;\n}\n\n#sidebar button {\n    background-color: black;\n    color: white;\n    font-size: 18px;\n    height: 60px;\n    border: none;\n    transition: all 0.6s;\n    font-weight: 600;\n    cursor: pointer;\n}\n#sidebar button:hover {\n    background: white;\n    color: black;\n    margin: 10px;\n}\n\n#sidebar #add-button-nav {\n    margin-top: 50px;\n}`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://todolist/./src/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `\nhtml, body {\n    margin: 0px;\n    padding: 0px;\n    min-height: 100vh;\n    min-width: 100vw;\n}\n\n* {\n    padding: 0px;\n    margin: 0px;\n    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\na {\n    text-decoration: none;\n    color: white;\n}\nbutton {\n    width: 100%;\n}\n#page{\n    min-height: 100vh;\n    min-width: 100vw;\n    display: grid;\n    grid-template-rows: 150px 1fr ;\n    grid-template-columns: minmax(200px, 1fr) 4fr;\n}\n#header {\n    grid-row: 1;\n    grid-column: 1 / -1;\n    background-color: black;\n    display: grid;\n    grid-template-columns: minmax(200px, 1fr) 4fr;\n}\n#header h1 {\n    color: white;\n    align-self: center;\n    justify-self: center;\n    font-size: 40px;\n    cursor: default;\n    transition: all 1s;\n}\n#header h1:hover {\n    letter-spacing: 2px;\n}\n\n#top-logo {\n    background-color: black;\n    height: 80px;\n    width: 80px;\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n    grid-template-rows: 1fr 1fr;\n    align-self: center;\n    background-color: black;\n    justify-self: center;\n    gap: 10px;\n    transform: rotate(45deg);\n    transition: all  1.5s ease-in-out 0.2s;\n}\n#top-logo:hover {\n    transform: rotate(405deg);\n    gap: 2px;\n    scale: 0.8;\n    /* gap: 5px; */\n}\n.logo-bar {\n    background-color: white;\n}\n#one {\n    grid-row: 1;\n    grid-column: 1/ -2;\n}\n#four {\n    grid-column: span 2;\n}\n\n\n#sidebar {\n    grid-row: 2 / -1;\n    grid-column: 1;\n    display: flex;\n    flex-direction: column;\n    background-color: black;\n}\n\n#sidebar button {\n    background-color: black;\n    color: white;\n    font-size: 18px;\n    height: 60px;\n    border: none;\n    transition: all 0.6s;\n    font-weight: 600;\n    cursor: pointer;\n    display: grid;\n    grid-template-columns: 1fr 2fr;\n    align-items: center;\n    column-gap: 10px;\n}\n#sidebar button p {\n    justify-self: start;\n}\n#sidebar button:hover {\n    background: white;\n    color: black;\n    margin: 10px;\n}\n#sidebar button:hover > .nav-image {\n    filter:invert(0%);\n}\n.nav-image {\n    filter: invert(100%);\n    fill: green;;\n    transition: all 0.6s;\n}\n\n#sidebar button img {\n    height: 30px;\n    width: auto;\n    justify-self: end;\n}\n\n#sidebar #add-button-nav {\n    margin-top: 50px;\n}`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://todolist/./src/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -136,7 +136,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst makeLi = function(name){\n    \n    const navButton = document.createElement('button')\n    navButton.textContent = name\n    navButton.classList.add('nav-button')\n\n    return navButton\n}\n\n\n/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {\n    const sidebar = document.querySelector('#sidebar')\n\n    const overview = makeLi('Overview')\n    overview.id = 'overview'\n    sidebar.appendChild(overview)\n\n    const thisWeek = makeLi('This week')\n    thisWeek.id = 'week'\n    sidebar.appendChild(thisWeek)\n\n    const month = makeLi(\"Month\")\n    month.id = 'month'\n    sidebar.appendChild(month)\n\n    const addNew = makeLi(\"Add New\")\n    addNew.id = 'add-button-nav'\n    sidebar.appendChild(addNew)\n    return\n}\n\n//# sourceURL=webpack://todolist/./src/basic_page/makeSidebarElems.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _img_calendar_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../img/calendar.svg */ \"./src/img/calendar.svg\");\n/* harmony import */ var _img_view_week_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../img/view-week.svg */ \"./src/img/view-week.svg\");\n/* harmony import */ var _img_check_all_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../img/check-all.svg */ \"./src/img/check-all.svg\");\n/* harmony import */ var _img_plus_thick_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../img/plus-thick.svg */ \"./src/img/plus-thick.svg\");\n\n\n\n\n\nconst makeLi = function(name){\n    const navButton = document.createElement('button')\n    const NavText = document.createElement('p')\n    NavText.textContent = name\n\n    const newPic = new Image()\n    newPic.classList.add('nav-image')\n    switch (name) {\n        case \"Overview\":\n           newPic.src = _img_check_all_svg__WEBPACK_IMPORTED_MODULE_2__ \n           break;\n        case \"This Week\":\n            newPic.src = _img_view_week_svg__WEBPACK_IMPORTED_MODULE_1__\n            break;\n        case \"Month\":\n            newPic.src = _img_calendar_svg__WEBPACK_IMPORTED_MODULE_0__\n            break;\n        case \"Add New\":\n            newPic.src = _img_plus_thick_svg__WEBPACK_IMPORTED_MODULE_3__\n            break;\n    };\n    \n\n    navButton.appendChild(newPic)\n    navButton.appendChild(NavText)\n    navButton.classList.add('nav-button')\n\n\n    return navButton\n}\n\n\n/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {\n    const sidebar = document.querySelector('#sidebar')\n\n    const overview = makeLi('Overview')\n    overview.id = 'overview'\n    sidebar.appendChild(overview)\n\n    const thisWeek = makeLi('This Week')\n    thisWeek.id = 'week'\n    sidebar.appendChild(thisWeek)\n\n    const month = makeLi(\"Month\")\n    month.id = 'month'\n    sidebar.appendChild(month)\n\n    const addNew = makeLi(\"Add New\")\n    addNew.id = 'add-button-nav'\n    sidebar.appendChild(addNew)\n    return\n}\n\n//# sourceURL=webpack://todolist/./src/basic_page/makeSidebarElems.js?");
 
 /***/ }),
 
@@ -157,6 +157,46 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _basic_page_makeAll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./basic_page/makeAll */ \"./src/basic_page/makeAll.js\");\n/* harmony import */ var _content_tabs_addListeners__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./content_tabs/addListeners */ \"./src/content_tabs/addListeners.js\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n\n\n(0,_basic_page_makeAll__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\n;(0,_content_tabs_addListeners__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n\n\n//# sourceURL=webpack://todolist/./src/main.js?");
+
+/***/ }),
+
+/***/ "./src/img/calendar.svg":
+/*!******************************!*\
+  !*** ./src/img/calendar.svg ***!
+  \******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"d28d21f5260965e5c123.svg\";\n\n//# sourceURL=webpack://todolist/./src/img/calendar.svg?");
+
+/***/ }),
+
+/***/ "./src/img/check-all.svg":
+/*!*******************************!*\
+  !*** ./src/img/check-all.svg ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"498fb8e2c7cf437f5146.svg\";\n\n//# sourceURL=webpack://todolist/./src/img/check-all.svg?");
+
+/***/ }),
+
+/***/ "./src/img/plus-thick.svg":
+/*!********************************!*\
+  !*** ./src/img/plus-thick.svg ***!
+  \********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"469e7f772cffd2e91e89.svg\";\n\n//# sourceURL=webpack://todolist/./src/img/plus-thick.svg?");
+
+/***/ }),
+
+/***/ "./src/img/view-week.svg":
+/*!*******************************!*\
+  !*** ./src/img/view-week.svg ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"8318bbfc3140847af091.svg\";\n\n//# sourceURL=webpack://todolist/./src/img/view-week.svg?");
 
 /***/ })
 
@@ -211,6 +251,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _bas
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -225,6 +277,29 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _bas
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
