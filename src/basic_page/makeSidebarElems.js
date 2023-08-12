@@ -2,6 +2,7 @@ const makeLi = function(name){
     
     const navButton = document.createElement('button')
     navButton.textContent = name
+    navButton.classList.add('nav-button')
 
     return navButton
 }
@@ -10,16 +11,20 @@ const makeLi = function(name){
 export default function(){
     const sidebar = document.querySelector('#sidebar')
 
-    const unordered = document.createElement('ul')
-    unordered.id = 'nav-list'
+    const overview = makeLi('Overview')
+    overview.id = 'overview'
+    sidebar.appendChild(overview)
 
-    sidebar.appendChild(makeLi('Overview'))
-    sidebar.appendChild(makeLi('This Week'))
-    sidebar.appendChild(makeLi("Month"))
+    const thisWeek = makeLi('This week')
+    thisWeek.id = 'week'
+    sidebar.appendChild(thisWeek)
+
+    const month = makeLi("Month")
+    month.id = 'month'
+    sidebar.appendChild(month)
 
     const addNew = makeLi("Add New")
     addNew.id = 'add-button-nav'
-
     sidebar.appendChild(addNew)
     return
 }

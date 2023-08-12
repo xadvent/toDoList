@@ -3,6 +3,7 @@ import makeLogo from "./makeLogo"
 
 const body = document.querySelector('body')
 const pageTitle = document.head.querySelector('title')
+
 export default function () {
     pageTitle.textContent = 'To-do List'
 
@@ -20,20 +21,19 @@ export default function () {
     header.appendChild(makeLogo)
     header.appendChild(title)
 
-
-
     const makeSidebar = (function () {
         const sidebar = document.createElement('div')
         sidebar.id = 'sidebar'
 
         page.appendChild(sidebar)
     })()
+
     const content = document.createElement('div')
     content.id = 'content'
     page.appendChild(content)
-
     body.appendChild(page)
+
     makeSidebarElems()
-    
+
 
 }

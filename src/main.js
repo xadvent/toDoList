@@ -1,4 +1,6 @@
 import makeAll from './basic_page/makeAll';
-import './style.css';
+import addListeners from './content_tabs/addListeners';
+import './style.css'
 
 makeAll()
+addListeners()

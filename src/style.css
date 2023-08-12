@@ -56,7 +56,7 @@ button {
     justify-self: center;
     gap: 10px;
     transform: rotate(45deg);
-    transition: all 1.5s ease-in-out;
+    transition: all  1.5s ease-in-out 0.2s;
 }
 #top-logo:hover {
     transform: rotate(405deg);
