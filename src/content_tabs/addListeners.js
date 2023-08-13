@@ -1,7 +1,13 @@
-const allButtons = document.querySelectorAll('.nav-list')
+import { overview } from "./tabCreation"
+import { thisWeek } from "./tabCreation"
+import { month } from "./tabCreation"
+import { addNew } from "./tabCreation"
+
+
 export const listenerFx = function(buttonID, uniqueFunction){
+    const content = document.querySelector('#content')
     const current = document.querySelector(`#${buttonID}`)
-    buttonID.onClick = uniqueFunction
+    current.onclick = uniqueFunction
     return
 }
 const stupidFx = function(IDButton){
@@ -11,7 +17,8 @@ const stupidFx = function(IDButton){
     }
 }
 export default function () {
-    stupidFx('overview')
-
-
+    listenerFx('overview', overview)
+    listenerFx('week', thisWeek)
+    listenerFx('month', month)
+    listenerFx('add-nav', addNew)
 }

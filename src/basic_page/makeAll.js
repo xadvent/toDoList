@@ -15,7 +15,10 @@ export default function () {
     header.id = 'header'
     const title = document.createElement('h1')
     title.id = 'title'
-    title.textContent = 'Schedule Now'
+    title.textContent = 'Schedule'
+    const headerHighlight = document.createElement('span')
+    headerHighlight.textContent = ' Now'
+    title.appendChild(headerHighlight)
 
     page.appendChild(header)
     header.appendChild(makeLogo)

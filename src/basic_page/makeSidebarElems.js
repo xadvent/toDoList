@@ -51,7 +51,7 @@ export default function(){
     sidebar.appendChild(month)
 
     const addNew = makeLi("Add New")
-    addNew.id = 'add-button-nav'
+    addNew.id = 'add-nav'
     sidebar.appendChild(addNew)
     return
 }
