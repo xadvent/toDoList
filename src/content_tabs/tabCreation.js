@@ -22,10 +22,15 @@ export const overview = function () {
     const content = clearContentMake('overview')
     const newButton = createNewButton()
 
+    const task = document.createElement('div')
+    task.classList.add('overview-task')
+    task.textContent= 'this is a task'
+
 
 
 
     content.appendChild(createNewButton())
+    content.appendChild(task)
     return
 }
 
