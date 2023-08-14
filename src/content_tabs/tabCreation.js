@@ -1,5 +1,6 @@
 import clearContentMake from "./clearContentMake"
 import Plus from '../img/plus-thick.svg'
+import { taskObj } from "../main"
 
 const createNewButton = function(){
     const contentNewButton = document.createElement('button')
@@ -25,7 +26,7 @@ export const overview = function () {
     const task = document.createElement('div')
     task.classList.add('overview-task')
     task.textContent= 'this is a task'
-
+    taskObj.refresh()
 
 
 
