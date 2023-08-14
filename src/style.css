@@ -193,6 +193,9 @@ a {
     color: black;
     
 }
+#add-button {
+    margin-left: 10px;
+}
 
 #sidebar button:hover > .nav-image,
 #add-button:hover > #plus {
