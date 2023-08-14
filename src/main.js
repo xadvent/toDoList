@@ -32,13 +32,10 @@ const Holder = (function () {
         for (let i = 0; i < tasklist.length; i++) {
             const createdTask = document.createElement('div')
             createdTask.classList.add('task-item')
-            console.log(tasklist[i])
             const iterable = tasklist[i]
             for (let [key, value] of Object.entries(iterable)) {
-                console.log(key)
-                console.log(value)
-                // add a switch to change the value of src if it's important
 
+                // add a switch to change the value of src if it's important
                 const info = document.createElement('h3')
                 switch (key) {
                     case ('importance'):

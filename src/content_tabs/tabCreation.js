@@ -19,19 +19,6 @@ const createNewButton = function () {
     contentNewButton.onclick = addNew
     return contentNewButton
 }
-function CreateTask(event) {
-    event.preventDefault();
-    const myFormData = new FormData(document.querySelector('#add-form'));
-    console.log(myFormData)
-
-    const formDataObj = {}
-    myFormData.forEach((value, key) => formDataObj[key] = value)
-    for ([key, value] of Object.entries(myFormData)) {
-        console.log(value)
-    }
-    console.log(myFormData)
-    return
-}
 const formLabelInput = (label, input) => {
     const newDiv = document.createElement('div')
     newDiv.classList.add('form-info')
@@ -49,6 +36,14 @@ const formLabelInput = (label, input) => {
     newDiv.appendChild(newLabel)
     newDiv.appendChild(newInput)
     return newDiv
+}
+function CreateTask(event) {
+    event.preventDefault();
+    const myFormData = new FormData(document.querySelector('#add-form'));
+
+    const formDataObj = {}
+    myFormData.forEach((value, key) => formDataObj[key] = value)
+    return
 }
 
 export const overview = function () {
