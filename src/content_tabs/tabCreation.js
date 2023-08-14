@@ -116,6 +116,11 @@ export const addNew = function () {
         const formDataObj = {}
         myFormData.forEach((value, key) => formDataObj[key] = value)
 
+        if (formDataObj.title.length <1 || formDataObj.description.length < 1){
+            document.querySelector('#add-form').reset()
+            return alert('Form Invalid: Entries must be at least 1 character.')
+        }
+
         console.log(formDataObj)
         taskObj.addItem(formDataObj.title, formDataObj.description, formDataObj.importance)
         clearContentMake('overview')

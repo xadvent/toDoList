@@ -299,12 +299,13 @@ a {
     display: flex;
     flex-direction: column;
     grid-column: 1;
+    min-width: max-content;
 }
 .overview-tab .description {
     align-self: center;
     justify-self: start;
-    white-space:nowrap;
     text-overflow: ellipsis; 
+    font-weight: 500;
 }
 
 #content .finished {
