@@ -3,11 +3,12 @@ import addListeners from './content_tabs/addListeners';
 import './style.css'
 
 export class Task {
-    constructor(title, description, importance) {
+    constructor(title, description, importance, completed) {
         this.title = title
         this.description = description
         this.importance = importance
-        this.completed = false
+        // CHANGE IMPORTANCE TO A NUMBER?
+        this.completed = completed ? true: false
     }
 
     complete() {
@@ -36,20 +37,31 @@ const Holder = (function () {
             for (let [key, value] of Object.entries(iterable)) {
                 console.log(key)
                 console.log(value)
-                if (key === 'importance'){
-                    console.log(document.querySelectorAll('.task-item')[tasklist.indexOf(this)])
-                }
+                // add a switch to change the value of src if it's important
+
                 const info = document.createElement('h3')
-                info.classList.add('task-info', key)
-                info.textContent = value
-                createdTask.appendChild(info)
+                switch (key) {
+                    case ('importance'):
+                        createdTask.style = `background-color: ${value}`
+                        break;
+                    case ('completed'):
+                        if (value) {
+                            createdTask.style = 'background-color: grey';
+                            createdTask.classList.add('finished')
+                        } 
+                        break
+                    default:
+                        info.classList.add('task-info', key)
+                        info.textContent = value
+                        createdTask.appendChild(info)
+                }
             }
             content.appendChild(createdTask)
         }
 
     }
-    const addItem = function (title, descr, importance) {
-        const newTask = new Task(title, descr, importance)
+    const addItem = function (title, descr, importance, completed) {
+        const newTask = new Task(title, descr, importance, completed)
         clear()
         tasklist.push(newTask)
     }
@@ -62,8 +74,9 @@ const Holder = (function () {
     }
 })()
 export const taskObj = Holder
-taskObj.addItem('peepee', 'peepeein the toilet', '1')
-taskObj.addItem('peepee', 'peepeein the toilet', '1')
+taskObj.addItem('peepee', 'peepeein the toilet', 'skyblue')
+taskObj.addItem('peepee', 'peepeein the toilet', 'red', false)
+taskObj.addItem('peepee', 'peepeein the toilet', 'red', true)
 
 
 makeAll()

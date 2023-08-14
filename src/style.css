@@ -251,6 +251,7 @@ a {
 #content {
     min-width: 95%;
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 .overview-tab {
@@ -293,4 +294,17 @@ a {
 .task-info .title {
     grid-column: 1;
     grid-row: 1/ -1;
+}
+
+#content .finished {
+    color: lightgray;
+    background-color: darkgrey;
+    text-decoration: line-through;
+}
+
+.new-form-tab h1 {
+    color: var(--highlight);
+}
+.form-info {
+    color: white;
 }
