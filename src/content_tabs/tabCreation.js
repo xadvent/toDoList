@@ -23,15 +23,14 @@ export const overview = function () {
     const content = clearContentMake('overview')
     const newButton = createNewButton()
 
-    const task = document.createElement('div')
-    task.classList.add('overview-task')
-    task.textContent= 'this is a task'
+    //  DELETE ME -- new item created to simulate addition 
+    taskObj.addItem('peepee', 'peepeein the beee beep', 'red')
+    // DELETE ME
     taskObj.refresh()
 
 
 
     content.appendChild(createNewButton())
-    content.appendChild(task)
     return
 }
 

@@ -20,13 +20,7 @@ export class Task {
     }
 }
 
-function* entries(obj){
-    for (let key of Object.keys(obj)) {
-        yield [key, obj[key]];
-    }
-}
-
-export const Holder = (function () {
+const Holder = (function () {
     let tasklist = []
 
     const clear = function () {
@@ -39,12 +33,14 @@ export const Holder = (function () {
             createdTask.classList.add('task-item')
             console.log(tasklist[i])
             const iterable = tasklist[i]
-            for (let [key, value] of entries(iterable)) {
+            for (let [key, value] of Object.entries(iterable)) {
                 console.log(key)
                 console.log(value)
-                const info = document.createElement('div')
-                info.classList.add('task-info')
-                info.classList.add(key)
+                if (key === 'importance'){
+                    console.log(document.querySelectorAll('.task-item')[tasklist.indexOf(this)])
+                }
+                const info = document.createElement('h3')
+                info.classList.add('task-info', key)
                 info.textContent = value
                 createdTask.appendChild(info)
             }
@@ -66,7 +62,8 @@ export const Holder = (function () {
     }
 })()
 export const taskObj = Holder
-taskObj.addItem('peepee', 'peepeein the toilet', 'very')
+taskObj.addItem('peepee', 'peepeein the toilet', '1')
+taskObj.addItem('peepee', 'peepeein the toilet', '1')
 
 
 makeAll()
