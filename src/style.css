@@ -186,7 +186,8 @@ a {
     /* margin: 10px; */
     padding-left: 20px;
 }
-#add-button:hover {
+#add-button:hover,
+#form-submit:hover {
     background-color: var(--highlight);
     scale: 1.1;
     color: black;
@@ -197,7 +198,8 @@ a {
 #add-button:hover > #plus {
     filter:invert(0%);
 }
-#add-button {
+#add-button,
+#form-submit {
     height: 50px;
     width: 150px;
     background-color: black;
@@ -253,6 +255,9 @@ a {
     margin-left: 10px;
     margin-right: 10px;
 }
+#content > * {
+    animation: slide-down 1s ease;
+}
 
 .overview-tab {
     /* background-color: black; */
@@ -300,6 +305,8 @@ a {
     color: lightgray;
     background-color: darkgrey;
     text-decoration: line-through;
+    order: 1;
+    margin-top: 20px;
 }
 
 .new-form-tab h1 {
@@ -307,4 +314,33 @@ a {
 }
 .form-info {
     color: white;
+}
+
+#add-form .form-info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 300px;
+    gap: 5px;
+}
+
+#content #add-form {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+#add-form .form-info label {
+    font-size: 18px;
+
+}
+.form-info input {
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+.form-info select{
+    padding: 5px 10px;
+    font-size: 16px;
 }

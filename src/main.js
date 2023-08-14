@@ -45,7 +45,7 @@ const Holder = (function () {
                         if (value) {
                             createdTask.style = 'background-color: grey';
                             createdTask.classList.add('finished')
-                        } 
+                        } else 
                         break
                     default:
                         info.classList.add('task-info', key)
@@ -71,9 +71,9 @@ const Holder = (function () {
     }
 })()
 export const taskObj = Holder
-taskObj.addItem('peepee', 'peepeein the toilet', 'skyblue')
-taskObj.addItem('peepee', 'peepeein the toilet', 'red', false)
-taskObj.addItem('peepee', 'peepeein the toilet', 'red', true)
+taskObj.addItem('love baby', 'tell vero I love her', 'red')
+taskObj.addItem('Doggies', 'pet dogs', 'skyblue', false)
+taskObj.addItem('Water', 'Drink water', 'skyblue', true)
 
 
 makeAll()

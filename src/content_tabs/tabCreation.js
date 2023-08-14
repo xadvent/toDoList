@@ -19,6 +19,7 @@ const createNewButton = function () {
     contentNewButton.onclick = addNew
     return contentNewButton
 }
+
 const formLabelInput = (label, input) => {
     const newDiv = document.createElement('div')
     newDiv.classList.add('form-info')
@@ -30,6 +31,9 @@ const formLabelInput = (label, input) => {
     newLabel.textContent = formattedName
 
     newInput.id = label
+    newInput.setAttribute('required', '')
+    newInput.minLength = 1
+    newInput.maxLength = 20
     newInput.name = label
     newInput.type = input
 
@@ -37,25 +41,14 @@ const formLabelInput = (label, input) => {
     newDiv.appendChild(newInput)
     return newDiv
 }
-function CreateTask(event) {
-    event.preventDefault();
-    const myFormData = new FormData(document.querySelector('#add-form'));
-
-    const formDataObj = {}
-    myFormData.forEach((value, key) => formDataObj[key] = value)
-    return
-}
 
 export const overview = function () {
     const content = clearContentMake('overview')
-    const newButton = createNewButton()
 
     //  DELETE ME -- new item created to simulate addition 
-    taskObj.addItem('peepee', 'peepeein the beee beep', 'lightgreen')
+    taskObj.addItem('New Task', 'Place-Holder to see formatting', 'lightgreen')
     // DELETE ME
     taskObj.refresh()
-
-
 
     content.appendChild(createNewButton())
     return
@@ -64,8 +57,6 @@ export const overview = function () {
 export const thisWeek = function () {
     const content = clearContentMake('week')
     content.appendChild(createNewButton())
-
-
 }
 
 export const month = function () {
@@ -82,25 +73,61 @@ export const addNew = function () {
     newH1.textContent = 'New Task'
 
     const newTitle = formLabelInput('title', 'text')
+    const newDescription = formLabelInput('description', 'text')
 
+    const createdDiv = document.createElement('div')
+    createdDiv.classList.add('form-info')
+
+    const selectLabel = document.createElement('label')
+    selectLabel.setAttribute('for', 'importance')
+    selectLabel.textContent = 'Importance'
+    createdDiv.appendChild(selectLabel)
+
+    const importancePicker = document.createElement('select')
+    importancePicker.setAttribute('name', 'importance')
+    importancePicker.setAttribute('required', '')
+    const opt1 = document.createElement('option')
+    const opt2 = document.createElement('option')
+    const opt3 = document.createElement('option')
+
+    opt1.value = 'red'
+    opt1.textContent = 'Priority'
+    opt2.value = 'skyblue'
+    opt2.textContent = 'Medium'
+    opt2.setAttribute('default', '')
+    opt3.value = 'lightgreen'
+    opt3.textContent = 'No Rush'
+
+    importancePicker.appendChild(opt1)
+    importancePicker.appendChild(opt2)
+    importancePicker.appendChild(opt3)
+    createdDiv.appendChild(importancePicker)
+
+    //submitFx
     const submitButton = document.createElement('button')
     submitButton.type = 'submit'
     submitButton.id = 'form-submit'
-
+    submitButton.textContent = 'Submit'
     submitButton.addEventListener('click', (event) => {
         event.preventDefault()
+        const content = document.querySelector('#content')
         const myFormData = new FormData(document.querySelector('#add-form'));
 
         const formDataObj = {}
         myFormData.forEach((value, key) => formDataObj[key] = value)
 
         console.log(formDataObj)
+        taskObj.addItem(formDataObj.title, formDataObj.description, formDataObj.importance)
+        clearContentMake('overview')
+        taskObj.refresh()
+        content.appendChild(createNewButton())
         return
     })
 
-
     content.appendChild(newH1)
     formElement.appendChild(newTitle)
+    formElement.appendChild(newDescription)
+    formElement.appendChild(createdDiv)
     formElement.appendChild(submitButton)
     content.appendChild(formElement)
 }
