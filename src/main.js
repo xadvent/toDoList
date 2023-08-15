@@ -39,13 +39,15 @@ const Holder = (function () {
                 const info = document.createElement('h3')
                 switch (key) {
                     case ('importance'):
-                        createdTask.style = `background-color: ${value}`
+                        createdTask.classList.add(value)
                         break;
                     case ('completed'):
                         if (value) {
                             createdTask.style = 'background-color: grey';
                             createdTask.classList.add('finished')
-                        } else 
+                        } else {
+                            null
+                        }
                         break
                     default:
                         info.classList.add('task-info', key)
@@ -71,9 +73,9 @@ const Holder = (function () {
     }
 })()
 export const taskObj = Holder
-taskObj.addItem('love baby', 'tell vero I love her', 'red')
-taskObj.addItem('Doggies', 'pet dogs', 'skyblue', false)
-taskObj.addItem('Water', 'Drink water', 'skyblue', true)
+taskObj.addItem('love baby', 'tell vero I love her', 'high-priority')
+taskObj.addItem('Doggies', 'pet dogs', 'high-priority', false)
+taskObj.addItem('Water', 'Drink water', 'high-priority', true)
 
 
 makeAll()

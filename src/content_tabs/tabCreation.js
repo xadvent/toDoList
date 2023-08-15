@@ -46,7 +46,7 @@ export const overview = function () {
     const content = clearContentMake('overview')
 
     //  DELETE ME -- new item created to simulate addition 
-    taskObj.addItem('New Task', 'Place-Holder to see formatting', 'lightgreen')
+    taskObj.addItem('New Task', 'Place-Holder to see formatting', 'low-priority')
     // DELETE ME
     taskObj.refresh()
 
@@ -90,13 +90,13 @@ export const addNew = function () {
     const opt2 = document.createElement('option')
     const opt3 = document.createElement('option')
 
-    opt1.value = 'red'
-    opt1.textContent = 'Priority'
-    opt2.value = 'skyblue'
+    opt1.value = 'high-priority'
+    opt1.textContent = 'High'
+    opt2.value = 'medium-priority'
     opt2.textContent = 'Medium'
-    opt2.setAttribute('default', '')
-    opt3.value = 'lightgreen'
-    opt3.textContent = 'No Rush'
+    opt2.setAttribute('selected', 'selected')
+    opt3.value = 'low-priority'
+    opt3.textContent = 'Low'
 
     importancePicker.appendChild(opt1)
     importancePicker.appendChild(opt2)
@@ -119,7 +119,7 @@ export const addNew = function () {
         if (formDataObj.title.length <1 || formDataObj.description.length < 1){
             document.querySelector('#add-form').reset()
             return alert('Form Invalid: Entries must be at least 1 character.')
-        }
+        } 
 
         console.log(formDataObj)
         taskObj.addItem(formDataObj.title, formDataObj.description, formDataObj.importance)
