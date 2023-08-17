@@ -277,30 +277,30 @@ a {
 }
 
 .overview-tab .task-item {
-    color: black;
-    background-color: #fff;
     position: relative;
-    z-index: 1;
     border: 1px solid black;
     height: 100px;
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 5px 20px;
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 1fr;
+    grid-auto-columns: 100px;
     grid-template-columns: 1fr 1fr; 
     transition: all 1s ease;
 }
+.task-item > h3 {
+    pointer-events: none;
+}
 
-.overview-tab .high-priority {
+.high-priority {
     background-color: red;
     order: -10;
 }
-.overview-tab .medium-priority {
+.medium-priority {
     background-color: skyblue;
     order: -5;
 }
-.overview-tab .low-priority{
+.low-priority{
     background-color: lightgreen;
     order: -1;
 }
@@ -383,4 +383,31 @@ a {
 select:hover {
     background-color: var(--highlight);
     scale: 1.05;
+}
+
+/* Define the fade-in animation */
+.button-fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* When the element has the 'visible' class, show it */
+.button-fade-in.visible {
+    opacity: 1;
+}
+
+.task-item button {
+    background-color: inherit;
+    border: none;
+    font-size: 20px;
+    transition: all 0.5s ease-in-out;
+    justify-self: flex-end;
+    width: 95%;
+    height: 100%;
+}
+
+.task-item button:hover {
+    scale: 1.1;
+    background-color: white;
+    color: red;
 }

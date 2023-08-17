@@ -1,6 +1,7 @@
 import makeAll from './basic_page/makeAll';
 import addListeners from './content_tabs/addListeners';
 import './style.css'
+import taskItemHover from './taskfx/taskItemHover';
 
 export class Task {
     constructor(title, description, importance, completed) {
@@ -57,6 +58,7 @@ const Holder = (function () {
             }
             content.appendChild(createdTask)
         }
+        taskItemHover()
 
     }
     const addItem = function (title, descr, importance, completed) {
