@@ -44,12 +44,7 @@ const formLabelInput = (label, input) => {
 
 export const overview = function () {
     const content = clearContentMake('overview')
-
-    //  DELETE ME -- new item created to simulate addition 
-    taskObj.addItem('New Task', 'Place-Holder to see formatting', 'low-priority')
-    // DELETE ME
     taskObj.refresh()
-
     content.appendChild(createNewButton())
     return
 }
