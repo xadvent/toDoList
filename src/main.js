@@ -2,14 +2,16 @@ import makeAll from './basic_page/makeAll';
 import addListeners from './content_tabs/addListeners';
 import './style.css'
 import taskItemHover from './taskfx/taskItemHover';
+import { getDifference } from './getDate';
+import { overview } from './content_tabs/tabCreation';
 
 export class Task {
-    constructor(title, description, importance, completed) {
+    constructor(title, description, importance, date) {
         this.title = title
         this.description = description
         this.importance = importance
-        // CHANGE IMPORTANCE TO A NUMBER?
-        this.completed = completed ? true: false
+        this.completed = false
+        this.date = date
     }
     complete() {
         this.completed = !this.completed
@@ -17,7 +19,7 @@ export class Task {
     }
     removeSelf(taskList) {
         const index = taskList.indexOf(this)
-        if (index !== -1){
+        if (index !== -1) {
             taskList.splice(index, 1)
         }
     }
@@ -30,7 +32,7 @@ const Holder = function () {
         document.querySelectorAll('.task-item').forEach(e => e.remove())
     }
 
-    const getRemove = function(taskName){
+    const getRemove = function (taskName) {
         return tasklist.find(thing => thing.title === taskName)
     }
     const refresh = function () {
@@ -50,16 +52,19 @@ const Holder = function () {
                         break;
                     case ('completed'):
                         if (value) {
-                            createdTask.style = 'background-color: grey';
                             createdTask.classList.add('finished')
-                        } else {
-                            null
                         }
+                        break
+                    case ('date'):
+                        info.textContent = getDifference(value)
+                        info.classList.add('task-info', key)
+                        createdTask.appendChild(info)
                         break
                     default:
                         info.classList.add('task-info', key)
                         info.textContent = value
                         createdTask.appendChild(info)
+                        break
                 }
             }
             content.appendChild(createdTask)
@@ -67,10 +72,10 @@ const Holder = function () {
         taskItemHover()
 
     }
-    const addItem = function (title, descr, importance, completed) {
-        const newTask = new Task(title, descr, importance, completed)
+    const addItem = function (title, descr, importance, date) {
+        const newTask = new Task(title, descr, importance, date)
         clear()
-        tasklist.push(newTask)
+        return tasklist.push(newTask)
     }
 
     return {
@@ -82,10 +87,11 @@ const Holder = function () {
     }
 }
 export const taskObj = Holder()
-taskObj.addItem('love baby', 'tell vero I love her', 'high-priority', false)
-taskObj.addItem('Doggies', 'pet dogs', 'high-priority', false)
-taskObj.addItem('Water', 'Drink water', 'high-priority', true)
+taskObj.addItem('love baby', 'tell vero I love her', 'high-priority', '2030-06-23')
+taskObj.addItem('Doggies', 'pet dogs', 'high-priority', '2023-02-21')
+taskObj.addItem('Water', 'Drink water', 'high-priority', '2021-21-21')
 
 
 makeAll()
 addListeners()
+overview()

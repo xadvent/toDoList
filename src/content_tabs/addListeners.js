@@ -1,10 +1,9 @@
+import { addNew } from "./addNew"
 import { overview } from "./tabCreation"
 import { thisWeek } from "./tabCreation"
 import { month } from "./tabCreation"
-import { addNew } from "./tabCreation"
 
-export const listenerFx = function(buttonID, uniqueFunction){
-    const content = document.querySelector('#content')
+const listenerFx = function(buttonID, uniqueFunction){
     const current = document.querySelector(`#${buttonID}`)
     current.onclick = uniqueFunction
     return
