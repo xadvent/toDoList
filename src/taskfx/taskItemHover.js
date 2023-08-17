@@ -1,3 +1,5 @@
+import { taskObj } from "../main";
+
 export default function () {
     const taskItems = document.querySelectorAll('.task-item');
 
@@ -9,17 +11,25 @@ export default function () {
                 const finishBox = document.createElement('button');
                 finishBox.classList.add('delete-button', 'button-fade-in');
                 finishBox.innerText = 'Finish';
-                finishBox.onclick = function(){
-                    console.log('working')
+                finishBox.onclick = function () {
+                    const infoTitle = this.parentElement.firstChild.textContent
+                    const taskToFinish = taskObj.getRemove(infoTitle)
+                    if (taskToFinish) {
+                        taskToFinish.complete()
+                        taskObj.refresh()
+                    }
                 }
 
                 const deleteBox = document.createElement('button');
                 deleteBox.classList.add('remove-button', 'button-fade-in');
                 deleteBox.innerText = 'Delete';
-                deleteBox.onclick = function(){
+                deleteBox.onclick = function () {
                     const infoTitle = this.parentElement.firstChild.textContent
-                    console.log(infoTitle)
-                    this.parentElement.remove()
+                    const taskToRemove = taskObj.getRemove(infoTitle)
+                    if (taskToRemove) {
+                        taskToRemove.removeSelf(taskObj.tasklist)
+                        taskObj.refresh()
+                    }
                 }
 
                 this.appendChild(finishBox);
@@ -30,7 +40,7 @@ export default function () {
                     deleteBox.classList.add('visible');
                 }, 10); // Delay to allow the element to be added to the DOM
 
-                buttonsCreated = true; 
+                buttonsCreated = true;
             }
         });
 

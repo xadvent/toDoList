@@ -11,25 +11,31 @@ export class Task {
         // CHANGE IMPORTANCE TO A NUMBER?
         this.completed = completed ? true: false
     }
-
     complete() {
-        this.completed = true
+        this.completed = !this.completed
         return
     }
-    removeSelf() {
-        taskList.splice(taskList.indexOf(this))
-        return
+    removeSelf(taskList) {
+        const index = taskList.indexOf(this)
+        if (index !== -1){
+            taskList.splice(index, 1)
+        }
     }
 }
 
-const Holder = (function () {
+const Holder = function () {
     let tasklist = []
 
     const clear = function () {
         document.querySelectorAll('.task-item').forEach(e => e.remove())
     }
+
+    const getRemove = function(taskName){
+        return tasklist.find(thing => thing.title === taskName)
+    }
     const refresh = function () {
         const content = document.querySelector('#content')
+        clear()
         for (let i = 0; i < tasklist.length; i++) {
             const createdTask = document.createElement('div')
             createdTask.classList.add('task-item')
@@ -71,11 +77,12 @@ const Holder = (function () {
         tasklist,
         clear,
         refresh,
-        addItem
+        addItem,
+        getRemove
     }
-})()
-export const taskObj = Holder
-taskObj.addItem('love baby', 'tell vero I love her', 'high-priority')
+}
+export const taskObj = Holder()
+taskObj.addItem('love baby', 'tell vero I love her', 'high-priority', false)
 taskObj.addItem('Doggies', 'pet dogs', 'high-priority', false)
 taskObj.addItem('Water', 'Drink water', 'high-priority', true)
 
