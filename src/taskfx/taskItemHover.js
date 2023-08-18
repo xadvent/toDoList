@@ -1,4 +1,6 @@
 import { taskObj } from "../main";
+import { clickDelete } from "./taskItemHoverFunctions";
+import { clickFinish } from "./taskItemHoverFunctions";
 
 export default function () {
     const taskItems = document.querySelectorAll('.task-item');
@@ -11,26 +13,12 @@ export default function () {
                 const finishBox = document.createElement('button');
                 finishBox.classList.add('delete-button', 'button-fade-in');
                 finishBox.innerText = 'Finish';
-                finishBox.onclick = function () {
-                    const infoTitle = this.parentElement.firstChild.textContent
-                    const taskToFinish = taskObj.getRemove(infoTitle)
-                    if (taskToFinish) {
-                        taskToFinish.complete()
-                        taskObj.refresh()
-                    }
-                }
+                finishBox.onclick = clickFinish
 
                 const deleteBox = document.createElement('button');
                 deleteBox.classList.add('remove-button', 'button-fade-in');
                 deleteBox.innerText = 'Delete';
-                deleteBox.onclick = function () {
-                    const infoTitle = this.parentElement.firstChild.textContent
-                    const taskToRemove = taskObj.getRemove(infoTitle)
-                    if (taskToRemove) {
-                        taskToRemove.removeSelf(taskObj.tasklist)
-                        taskObj.refresh()
-                    }
-                }
+                deleteBox.onclick = clickDelete
 
                 this.appendChild(finishBox);
                 this.appendChild(deleteBox);

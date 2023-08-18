@@ -420,5 +420,5 @@ select:hover {
 }
 
 .finished > .delete-button:before {
-    content: 'Un-';
+    content: 'Undo ';
 }

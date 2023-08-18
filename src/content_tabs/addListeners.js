@@ -1,4 +1,4 @@
-import { addNew } from "./addNew"
+import { addNew } from "./formTab/addNew"
 import { overview } from "./tabCreation"
 import { thisWeek } from "./tabCreation"
 import { month } from "./tabCreation"
