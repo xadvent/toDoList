@@ -325,8 +325,10 @@ a {
 #content .finished {
     color: lightgray;
     background-color: darkgrey;
-    text-decoration: line-through;
     order: 10;
+}
+#content .finished > h3 {
+    text-decoration: line-through;
 }
 
 .new-form-tab h1 {
@@ -415,4 +417,8 @@ select:hover {
 .date {
     align-self: center;
     justify-self: start;
+}
+
+.finished > .delete-button:before {
+    content: 'Un-';
 }

@@ -87,9 +87,9 @@ const Holder = function () {
     }
 }
 export const taskObj = Holder()
-taskObj.addItem('love baby', 'tell vero I love her', 'high-priority', '2030-06-23')
-taskObj.addItem('Doggies', 'pet dogs', 'high-priority', '2023-02-21')
-taskObj.addItem('Water', 'Drink water', 'high-priority', '2021-21-21')
+taskObj.addItem('love baby', 'tell vero I love her', 'high-priority', 'NaN-NaN')
+taskObj.addItem('Doggies', 'pet dogs', 'medium-priority', '2023-02-21')
+taskObj.addItem('Water', 'Drink water', 'low-priority', '2021-21-21')
 
 
 makeAll()
