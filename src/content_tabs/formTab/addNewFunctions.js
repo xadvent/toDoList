@@ -4,7 +4,7 @@ import { getDifference } from "../../getDate"
 import clearContentMake from "../clearContentMake"
 import { createNewButton } from "../tabCreation"
 
-export const formLabelInput = (label, input) => {
+export const formLabelInput = (label, input, length) => {
     const newDiv = document.createElement('div')
     newDiv.classList.add('form-info')
     const newLabel = document.createElement('label')
@@ -17,7 +17,7 @@ export const formLabelInput = (label, input) => {
     newInput.id = label
     newInput.setAttribute('required', '')
     newInput.minLength = 1
-    newInput.maxLength = 20
+    newInput.maxLength = length
     newInput.name = label
     newInput.type = input
 

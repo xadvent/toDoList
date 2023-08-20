@@ -11,8 +11,8 @@ export const addNew = function () {
     const newH1 = document.createElement('h1')
     newH1.textContent = 'New Task'
 
-    const newTitle = formLabelInput('title', 'text')
-    const newDescription = formLabelInput('description', 'text')
+    const newTitle = formLabelInput('title', 'text', 10)
+    const newDescription = formLabelInput('description', 'textarea', 90)
 
     const createdDiv = document.createElement('div')
     createdDiv.classList.add('form-info')
