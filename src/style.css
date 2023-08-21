@@ -258,13 +258,12 @@ a {
     margin-left: 10px;
     margin-right: 10px;
 }
-#content > * {
+#content > *{
     animation: slide-down 1s ease;
 }
 
 .overview-tab {
     /* background-color: black; */
-    animation: slide-down 1s ease;
     display: grid;
     grid-auto-rows: minmax(1fr, 100px);
     /* grid-template-columns: repeat(2,  1fr); */
@@ -290,6 +289,7 @@ a {
 }
 .task-item > h3 {
     pointer-events: none;
+    transition: all 1s ease-in-out;
 }
 
 .high-priority {
@@ -405,13 +405,10 @@ select:hover {
     opacity: 1;
 }
 
-.task-item:hover {
+/* .task-item:hover {
     height: 120px;
-}
-.description {
-    transition: all 1s ease-in-out;
-}
-.task-item:hover > .description {
+} */
+.expanded  > .description {
     white-space: normal;
     
     width: 100%;
@@ -450,7 +447,7 @@ select:hover {
 }
 
 #content .expanded {
-    height: 300px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     padding-top: 10px;
@@ -459,10 +456,19 @@ select:hover {
     justify-content: center;
 }
 #content .expanded > button {
-    height: 50px;
+        height: 50px;
 }
 #content .expanded > .description {
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    flex: 1;
+}
+#content .expanded  .title {
+    margin-top: 15px;
+}
+#content .expanded > .description:before {
+    content: 'Description: ';
+    font-size: large;
+}
+#content .expanded > .date::before {
+    content: 'Due date: ';
 }

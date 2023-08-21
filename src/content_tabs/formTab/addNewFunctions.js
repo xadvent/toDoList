@@ -1,8 +1,8 @@
 import { taskObj } from "../../main"
 import { isPast } from "date-fns"
-import { getDifference } from "../../getDate"
 import clearContentMake from "../clearContentMake"
 import { createNewButton } from "../tabCreation"
+import { format } from "date-fns"
 
 export const formLabelInput = (label, input, length) => {
     const newDiv = document.createElement('div')
@@ -44,18 +44,19 @@ export const submitFunction = function (event) {
     if (formDataObj.title.length < 1 || formDataObj.description.length < 1) {
         document.querySelector('#add-form').reset();
         return alert('Form Invalid: Entries must be at least 1 character.');
-    } 
+    }
     const dueDate = new Date(formDataObj.date);
-    if (isPast(dueDate)){
+    if (isPast(dueDate)) {
         return alert('Form Invalid: Date cannot be in the past.')
     }
-
-    const dueDateFormatted = `${dueDate.getFullYear()}-${(dueDate.getMonth() + 1).toString().padStart(2, '0')}-${dueDate.getDate().toString().padStart(2, '0')}`;
-    const dueDateDifference = getDifference(dueDateFormatted); // Calculate the difference using your getDifference function
+    let dueDateFormatted;
+    if (formDataObj.date === '') {
+        dueDateFormatted = 'Never'
+    } else {
+        dueDateFormatted = format(new Date(formDataObj.date), 'yyyy-MM-dd')
+    }
 
     console.log(formDataObj);
-    console.log(dueDateFormatted);
-    console.log(dueDateDifference);
 
     taskObj.addItem(formDataObj.title, formDataObj.description, formDataObj.importance, dueDateFormatted);
     clearContentMake('overview');

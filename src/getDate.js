@@ -1,23 +1,31 @@
-const getToday = function () {
-    const date = new Date();
-    const month = date.getMonth() + 1; // Adding 1 to adjust for 0-based indexing
-    const days = date.getDate(); // Use getDate() instead of getDay()
-    const year = date.getFullYear();
+import { differenceInCalendarDays, formatRelative, startOfToday } from "date-fns";
+import { format } from 'date-fns'
 
-    return {
-        month,
-        days,
-        year
-    };
-};
+const totalTime = function (difference) {
+    let days = 0
+    let months = 0
+    let years = 0
+
+    while (difference >= 356) {
+        years++
+        difference -= 365
+    }
+    while (difference > 30) {
+        months++
+        difference -= 30
+    }
+    days += difference 
+    return `${years > 0 ? years + ' years, ' : ''}${months > 0 ? months + ' months, ' : ''}${days} days.`;
+}
 
 export const getDifference = function (taskDate) {
-    if (taskDate.split('-').includes('NaN')) return 'Never'
-    const _taskDate = String(taskDate).split('-');
-    const currentDate = getToday();
-    const yearDiff = +_taskDate[0] - currentDate.year;
-    const monthDiff = (+_taskDate[1] - currentDate.month) + (yearDiff * 12); // Calculate total months
-    const dayDiff = +_taskDate[2] - currentDate.days;
+    if (taskDate === 'Never' || taskDate.split('-').includes('NaN')) return 'Never'
+    let taskSplit = taskDate.split('-')
+    const today = format(startOfToday(), 'yyyy MM dd').split(' ')
+    const overallDifference = differenceInCalendarDays(
+        new Date(taskSplit[0], taskSplit[1], taskSplit[2]),
+        new Date(today[0], today[1], today[2])
+    );
+    return totalTime(overallDifference)
+}
 
-    return `${yearDiff > 0 ? yearDiff + ' years, ' : ''}${monthDiff > 0 ? monthDiff + ' months, ' : ''}${dayDiff} days.`;
-};
