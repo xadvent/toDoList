@@ -9,6 +9,7 @@ export default function () {
         let buttonsCreated = false; // Flag to track if buttons are already created
 
         item.addEventListener('click', function (event) {
+            item.classList.add('expanded')
             if (!buttonsCreated) {
                 const finishBox = document.createElement('button');
                 finishBox.classList.add('delete-button', 'button-fade-in');
@@ -33,6 +34,7 @@ export default function () {
         });
 
         item.addEventListener('mouseleave', function () {
+            item.classList.remove('expanded')
             // Remove the buttons when mouse leaves the task item
             const buttons = item.querySelectorAll('.delete-button, .remove-button');
             buttons.forEach(button => button.remove());

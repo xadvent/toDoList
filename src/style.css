@@ -284,8 +284,8 @@ a {
     padding: 5px 20px;
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 1fr;
-    grid-template-columns: 1fr 1fr; 
+    grid-auto-columns: 80px;
+    grid-template-columns: 1fr 1fr 1fr; 
     transition: all 1s ease;
 }
 .task-item > h3 {
@@ -406,7 +406,7 @@ select:hover {
 }
 
 .task-item:hover {
-    height: 150px;
+    height: 120px;
 }
 .description {
     transition: all 1s ease-in-out;
@@ -421,6 +421,8 @@ select:hover {
     /* word-wrap: normal;
     white-space: normal; */
 }
+
+/* remove?  */
 .task-item button {
     background-color: inherit;
     border: none;
@@ -428,7 +430,8 @@ select:hover {
     transition: all 0.5s ease-in-out;
     justify-self: flex-end;
     width: 95%;
-    height: 100%;
+    height: 50%;
+    align-self: center;
 }
 
 .task-item button:hover {
@@ -444,4 +447,22 @@ select:hover {
 
 .finished > .delete-button:before {
     content: 'Undo ';
+}
+
+#content .expanded {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 10px;
+    justify-content: center;
+}
+#content .expanded > button {
+    height: 50px;
+}
+#content .expanded > .description {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
