@@ -4,6 +4,7 @@ import './style.css'
 import taskItemHover from './taskfx/taskItemHover';
 import { getDifference } from './getDate';
 import { overview } from './content_tabs/tabCreation';
+
 export class Task {
     constructor(title, description, importance, date) {
         this.title = title
@@ -43,7 +44,6 @@ const Holder = function () {
             const iterable = tasklist[i]
             for (let [key, value] of Object.entries(iterable)) {
 
-                // add a switch to change the value of src if it's important
                 const info = document.createElement('h3')
                 switch (key) {
                     case ('importance'):
@@ -89,7 +89,6 @@ export const taskObj = Holder()
 taskObj.addItem('love baby', 'tell vero I love her', 'high-priority', 'NaN-NaN')
 taskObj.addItem('Doggies', 'pet dogs', 'medium-priority', '2023-10-21')
 taskObj.addItem('Water', 'Drink water', 'low-priority', '2026-21-21')
-
 
 makeAll()
 addListeners()
