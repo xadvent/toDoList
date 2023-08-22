@@ -2,6 +2,7 @@ import Monthly from '../img/calendar.svg'
 import Weekly from '../img/view-week.svg'
 import Overview from '../img/check-all.svg'
 import Plus from '../img/plus-thick.svg'
+import Projects from '../img/note-multiple.svg'
 
 const makeLi = function(name){
     const navButton = document.createElement('button')
@@ -19,6 +20,9 @@ const makeLi = function(name){
             break;
         case "Month":
             newPic.src = Monthly
+            break;
+        case "Projects":
+            newPic.src = Projects
             break;
         case "Add New":
             newPic.src = Plus
@@ -41,6 +45,10 @@ export default function(){
     const overview = makeLi('Overview')
     overview.id = 'overview'
     sidebar.appendChild(overview)
+
+    const projects = makeLi('Projects')
+    projects.id = 'projects'
+    sidebar.appendChild(projects)
 
     const thisWeek = makeLi('This Week')
     thisWeek.id = 'week'

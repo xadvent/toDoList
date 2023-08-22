@@ -3,9 +3,8 @@ import Plus from '../img/plus-thick.svg'
 import { taskObj } from "../main"
 import { addNew } from "./formTab/addNew"
 
-export const createNewButton = function () {
+export const createNewButton = function (type) {
     const contentNewButton = document.createElement('button')
-    contentNewButton.id = 'add-button'
 
     const addIcon = new Image()
     addIcon.src = Plus
@@ -13,11 +12,19 @@ export const createNewButton = function () {
     addIcon.id = 'plus'
 
     const addName = document.createElement('p')
-    addName.textContent = 'Add New'
+        contentNewButton.id = 'add-button'
+
+    if (type === 'projects') {
+        addName.textContent = 'New Project'
+        // contentNewButton.onclick = 
+    } else {
+        addName.textContent = 'Add New'
+        contentNewButton.onclick = addNew
+    }
+
 
     contentNewButton.appendChild(addIcon)
     contentNewButton.appendChild(addName)
-    contentNewButton.onclick = addNew
     return contentNewButton
 }
 
@@ -37,4 +44,8 @@ export const thisWeek = function () {
 export const month = function () {
     const content = clearContentMake('month')
     content.appendChild(createNewButton())
+}
+export const projects = function () {
+    const content = clearContentMake('projects')
+    content.appendChild(createNewButton('projects'))
 }
