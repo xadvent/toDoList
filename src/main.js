@@ -4,7 +4,6 @@ import './style.css'
 import taskItemHover from './taskfx/taskItemHover';
 import { getDifference } from './getDate';
 import { overview } from './content_tabs/tabCreation';
-
 export class Task {
     constructor(title, description, importance, date) {
         this.title = title

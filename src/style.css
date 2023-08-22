@@ -4,56 +4,68 @@
     --secondary: white;
     --main: black;
 }
+
 @keyframes slide-down {
     0% {
         opacity: 0;
         transform: translateY(-15px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
 @keyframes slide-right {
-    0%{
+    0% {
         opacity: 0;
         transform: translateX(-40px);
         filter: blur(2px);
     }
+
     80% {
         filter: blur(0);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0px);
     }
 }
+
 @keyframes logo-build {
     0% {
         opacity: 0;
         column-gap: 50px;
         transform: rotate(0deg);
     }
-    50%{
+
+    50% {
         gap: 2px;
         opacity: 0.8;
         scale: 0.8;
     }
+
     100% {
         opacity: 1;
         gap: 10px;
         transform: rotate(405deg);
     }
 }
+
 @keyframes fade-in {
-    0%{
+    0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
 }
-html, body {
+
+html,
+body {
     margin: 0px;
     padding: 0px;
     min-height: 100vh;
@@ -67,18 +79,21 @@ html, body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-sizing: border-box;
 }
+
 a {
     text-decoration: none;
     color: white;
 }
+
 #sidebar button {
     width: 100%;
 }
-#page{
+
+#page {
     min-height: 100vh;
     min-width: 100vw;
     display: grid;
-    grid-template-rows: 150px 1fr ;
+    grid-template-rows: 150px 1fr;
     grid-template-columns: minmax(200px, 1fr) 4fr;
 }
 
@@ -100,7 +115,7 @@ a {
     animation: slide-right 1s ease;
 }
 
-#header h1:hover > span {
+#header h1:hover>span {
     color: var(--highlight);
     letter-spacing: 2px;
     font-size: 45px;
@@ -122,31 +137,37 @@ a {
     justify-self: center;
     gap: 10px;
     transform: rotate(45deg);
-    transition: all  1.5s ease-in-out 0.2s;
+    transition: all 1.5s ease-in-out 0.2s;
     animation: logo-build 1.5s ease;
 }
+
 #top-logo:hover {
     transform: rotate(405deg);
     gap: 2px;
     scale: 0.8;
     /* gap: 5px; */
 }
+
 .logo-bar {
     background-color: black;
 }
+
 #one {
     grid-row: 1;
     background-color: white;
     grid-column: 1/ -2;
 }
+
 #four {
     grid-column: span 2;
     background-color: white;
 }
-#two{
+
+#two {
     background-color: var(--highlight);
 }
-#three{
+
+#three {
     background-color: var(--highlight);
 }
 
@@ -177,31 +198,36 @@ a {
     column-gap: 10px;
     animation: slide-right 1s ease-in-out;
 }
+
 #sidebar button p {
     justify-self: start;
 }
+
 #sidebar button:hover {
     background: var(--secondary);
     color: var(--main);
     /* margin: 10px; */
     padding-left: 20px;
 }
+
 #add-button:hover,
 #form-submit:hover {
     background-color: var(--highlight);
     scale: 1.1;
     color: black;
-    
+
 }
+
 #add-button {
     margin-left: 10px;
     justify-self: center;
 }
 
-#sidebar button:hover > .nav-image,
-#add-button:hover > #plus {
-    filter:invert(0%);
+#sidebar button:hover>.nav-image,
+#add-button:hover>#plus {
+    filter: invert(0%);
 }
+
 #add-button,
 #form-submit {
     height: 50px;
@@ -223,17 +249,21 @@ a {
     margin-top: 10px;
     animation: slide-down 1s ease;
 }
+
 #add-button p {
     justify-self: start;
 }
+
 #plus {
     height: 20px;
     align-self: center;
     justify-self: center;
 }
-#add-button:hover > .nav-image {
+
+#add-button:hover>.nav-image {
     filter: invert(100%);
 }
+
 .nav-image {
     filter: invert(100%);
     transition: all 0.6s;
@@ -248,6 +278,7 @@ a {
 #sidebar #add-nav {
     margin-top: 50px;
 }
+
 #sidebar #add-nav:hover {
     background-color: var(--highlight);
 }
@@ -258,7 +289,8 @@ a {
     margin-left: 10px;
     margin-right: 10px;
 }
-#content > *{
+
+#content>* {
     animation: slide-down 1s ease;
 }
 
@@ -284,10 +316,12 @@ a {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 80px;
-    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;
     transition: all 1s ease;
 }
-.task-item > h3 {
+
+.task-item>h3 {
     pointer-events: none;
     transition: all 1s ease-in-out;
 }
@@ -296,11 +330,13 @@ a {
     background-color: red;
     order: -10;
 }
+
 .medium-priority {
     background-color: skyblue;
     order: -5;
 }
-.low-priority{
+
+.low-priority {
     background-color: lightgreen;
     order: -1;
 }
@@ -315,16 +351,18 @@ a {
     grid-column: 1;
     min-width: max-content;
 }
+
 .overview-tab .description {
     align-self: center;
     width: 100%;
-    text-overflow:clip;
+    text-overflow: clip;
     justify-self: start;
     white-space: nowrap;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
     font-weight: 500;
     overflow: scroll;
 }
+
 .overview-tab .date {
     text-align: center;
 }
@@ -334,13 +372,15 @@ a {
     background-color: darkgrey;
     order: 10;
 }
-#content .finished > h3 {
+
+#content .finished>h3 {
     text-decoration: line-through;
 }
 
 .new-form-tab h1 {
     color: var(--highlight);
 }
+
 .form-info {
     color: white;
 }
@@ -360,10 +400,12 @@ a {
     gap: 20px;
     align-items: center;
 }
+
 #add-form .form-info label {
     font-size: 18px;
 
 }
+
 .form-info input {
     padding: 5px 10px;
     font-size: 16px;
@@ -371,24 +413,28 @@ a {
     border: none;
 
 }
+
 .form-info input:hover,
 .form-info input:focus-visible {
     outline: none;
     scale: 1.05;
     background-color: var(--highlight);
 }
+
 .form-info input:invalid {
-    background-color:lightcoral;
+    background-color: lightcoral;
 }
+
 .form-info input:valid {
     background-color: var(--highlight);
 }
 
-.form-info select{
+.form-info select {
     padding: 5px 10px;
     font-size: 16px;
     transition: all 0.4s ease-in-out;
 }
+
 select:hover {
     background-color: var(--highlight);
     scale: 1.05;
@@ -408,9 +454,9 @@ select:hover {
 /* .task-item:hover {
     height: 120px;
 } */
-.expanded  > .description {
+.expanded>.description {
     white-space: normal;
-    
+
     width: 100%;
     padding-left: 0px;
     padding-right: 0px;
@@ -426,8 +472,8 @@ select:hover {
     font-size: 20px;
     transition: all 0.5s ease-in-out;
     justify-self: flex-end;
-    width: 95%;
-    height: 50%;
+    width: 50%;
+    height: 20%;
     align-self: center;
 }
 
@@ -442,7 +488,7 @@ select:hover {
     align-self: center;
 }
 
-.finished > .delete-button:before {
+.finished>.delete-button:before {
     content: 'Undo ';
 }
 
@@ -455,20 +501,25 @@ select:hover {
     gap: 10px;
     justify-content: center;
 }
-#content .expanded > button {
-        height: 50px;
+
+#content .expanded>button {
+    height: 50px;
 }
-#content .expanded > .description {
+
+#content .expanded>.description {
     text-align: center;
     flex: 1;
 }
-#content .expanded  .title {
+
+#content .expanded .title {
     margin-top: 15px;
 }
-#content .expanded > .description:before {
+
+#content .expanded>.description:before {
     content: 'Description: ';
     font-size: large;
 }
-#content .expanded > .date::before {
+
+#content .expanded>.date::before {
     content: 'Due date: ';
 }
