@@ -3,6 +3,7 @@ import Weekly from '../img/view-week.svg'
 import Overview from '../img/check-all.svg'
 import Plus from '../img/plus-thick.svg'
 import Projects from '../img/note-multiple.svg'
+import NewProject from '../img/plus-box.svg'
 
 const makeLi = function(name){
     const navButton = document.createElement('button')
@@ -26,6 +27,9 @@ const makeLi = function(name){
             break;
         case "Add New":
             newPic.src = Plus
+            break;
+        case "New Project":
+            newPic.src = NewProject
             break;
     };
     
@@ -61,5 +65,9 @@ export default function(){
     const addNew = makeLi("Add New")
     addNew.id = 'add-nav'
     sidebar.appendChild(addNew)
+
+    const addProject = makeLi('New Project')
+    addProject.id = 'add-project'
+    sidebar.appendChild(addProject)
     return
 }

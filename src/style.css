@@ -1,6 +1,9 @@
 :root {
     --highlight: lightskyblue;
     --second-highlight: lightblue;
+    --low-priority: lightgreen;
+    --medium-priority: lightskyblue;
+    --high-priority: red;
     --secondary: white;
     --main: black;
 }
@@ -219,8 +222,13 @@ a {
 }
 
 #add-button {
-    margin-left: 10px;
     justify-self: center;
+    margin-bottom: 40px;
+}
+
+#sidebar #add-project:hover,
+.projects-tab #add-button:hover {
+    background-color: var(--high-priority);
 }
 
 #sidebar button:hover>.nav-image,
@@ -242,10 +250,8 @@ a {
     gap: 10px;
     color: white;
     align-items: center;
-
     font-size: 18px;
     font-weight: 600;
-
     margin-top: 10px;
     animation: slide-down 1s ease;
 }
@@ -280,7 +286,7 @@ a {
 }
 
 #sidebar #add-nav:hover {
-    background-color: var(--highlight);
+    background-color: var(--medium-priority);
 }
 
 
@@ -323,21 +329,24 @@ a {
 
 .task-item>h3 {
     pointer-events: none;
-    transition: all 1s ease-in-out;
+}
+.expanded:hover >h3,
+.expanded:hover > button {
+    animation: slide-right 1.5s ease;
 }
 
 .high-priority {
-    background-color: red;
+    background-color: var(--high-priority);
     order: -10;
 }
 
 .medium-priority {
-    background-color: skyblue;
+    background-color: var(--medium-priority);
     order: -5;
 }
 
 .low-priority {
-    background-color: lightgreen;
+    background-color: var(--low-priority);
     order: -1;
 }
 
@@ -451,9 +460,6 @@ select:hover {
     opacity: 1;
 }
 
-/* .task-item:hover {
-    height: 120px;
-} */
 .expanded>.description {
     white-space: normal;
 
