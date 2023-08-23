@@ -9,39 +9,41 @@ class Task {
         this.completed = false
         this.date = date
     }
+
     complete() {
         this.completed = !this.completed
         return
     }
-    removeSelf(taskList) {
-        const index = taskList.indexOf(this)
+
+    removeSelf(tasklist) {
+        const index = tasklist.indexOf(this)
         if (index !== -1) {
-            taskList.splice(index, 1)
+            tasklist.splice(index, 1)
         }
     }
 }
 
-export const Holder = function () {
-    let tasklist = []
+export class TaskManager {
+    constructor() {
+        this.tasklist = []
+    }
 
-    const clear = function () {
+    clear() {
         document.querySelectorAll('.task-item').forEach(e => e.remove())
     }
 
-    const getRemove = function (taskName) {
-        return tasklist.find(thing => thing.title === taskName)
+    getRemove(taskName) {
+        return this.tasklist.find(thing => thing.title === taskName)
     }
-    
-    const refresh = function () {
-        const content = document.querySelector('#content')
-        clear()
 
-        for (let i = 0; i < tasklist.length; i++) {
+    refresh() {
+        const content = document.querySelector('#content')
+        this.clear()
+
+        this.tasklist.forEach(task => {
             const createdTask = document.createElement('div')
             createdTask.classList.add('task-item')
-            const iterable = tasklist[i]
-
-            for (let [key, value] of Object.entries(iterable)) {
+            for (let [key, value] of Object.entries(task)) {
                 const info = document.createElement('h3')
                 switch (key) {
                     case ('importance'):
@@ -68,25 +70,19 @@ export const Holder = function () {
                 }
             }
             content.appendChild(createdTask)
-        }
+        })
         taskItemHover()
     }
-    const addItem = function (title, descr, importance, date) {
-        const newTask = new Task(title, descr, importance, date)
-        clear()
-        return tasklist.push(newTask)
-    }
 
-    return {
-        tasklist,
-        clear,
-        refresh,
-        addItem,
-        getRemove
+    addItem(title, descr, importance, date) {
+        const newTask = new Task(title, descr, importance, date)
+        this.clear()
+        return this.tasklist.push(newTask)
     }
 }
 
-export const taskObj = Holder()
-taskObj.addItem('love baby', 'tell vero I love her', 'high-priority', 'NaN-NaN')
-taskObj.addItem('Doggies', 'pet dogs', 'medium-priority', '2023-10-21')
-taskObj.addItem('Water', 'Drink water', 'low-priority', '2026-21-21')
+
+export const allTaskManager = new TaskManager()
+allTaskManager.addItem('love baby', 'tell vero I love her', 'high-priority', 'NaN-NaN')
+allTaskManager.addItem('Doggies', 'pet dogs', 'medium-priority', '2023-10-21')
+allTaskManager.addItem('Water', 'Drink water', 'low-priority', '2026-21-21')

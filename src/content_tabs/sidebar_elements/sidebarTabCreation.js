@@ -1,7 +1,7 @@
 import clearContentMake from "../clearContentMake"
 import Plus from '../../img/plus-thick.svg'
 import PlusProject from '../../img/plus-box.svg'
-import { taskObj } from "../../task_controls/objectHolders"
+import { allTaskManager } from "../../task_controls/objectHolders"
 import { addNew } from "../form_tab/addNew"
 
 export const createNewButton = function (type) {
@@ -35,7 +35,7 @@ export const createNewButton = function (type) {
 
 export const overview = function () {
     const content = clearContentMake('overview')
-    taskObj.refresh()
+    allTaskManager.refresh()
     content.appendChild(createNewButton())
     return
 }

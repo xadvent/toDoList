@@ -1,44 +1,48 @@
-import { clickDelete } from "./taskItemHoverFunctions";
-import { clickFinish } from "./taskItemHoverFunctions";
+import { clickDelete, clickFinish } from "./taskItemHoverFunctions";
+
+function createButton(text, className, clickHandler) {
+    const button = document.createElement('button')
+    button.classList.add(className, 'button-fade-in')
+    button.innerText = text
+    button.onclick = clickHandler
+    return button
+}
 
 export default function () {
     const taskItems = document.querySelectorAll('.task-item');
 
     taskItems.forEach(item => {
-        let buttonsCreated = false; // Flag to track if buttons are already created
+        let buttonsCreated = false; 
 
-        item.addEventListener('click', function (event) {
+        function handleMouseEnter(event) {
             item.classList.add('expanded')
             if (!buttonsCreated) {
-                const finishBox = document.createElement('button');
-                finishBox.classList.add('delete-button', 'button-fade-in');
-                finishBox.innerText = 'Finish';
-                finishBox.onclick = clickFinish
+                const finishBox = createButton('Finish', 'delete-button', clickFinish)
+                const deleteBox = createButton('Delete', 'remove-button', clickDelete)
 
-                const deleteBox = document.createElement('button');
-                deleteBox.classList.add('remove-button', 'button-fade-in');
-                deleteBox.innerText = 'Delete';
-                deleteBox.onclick = clickDelete
-
-                this.appendChild(finishBox);
-                this.appendChild(deleteBox);
+                this.appendChild(finishBox)
+                this.appendChild(deleteBox)
 
                 setTimeout(() => {
-                    finishBox.classList.add('visible');
-                    deleteBox.classList.add('visible');
-                }, 10); // Delay to allow the element to be added to the DOM
+                    finishBox.classList.add('visible')
+                    deleteBox.classList.add('visible')
+                }, 10);
 
                 buttonsCreated = true;
+            } else{
+                handleMouseLeave()
             }
-        });
+        }
 
-        item.addEventListener('mouseleave', function () {
+        function handleMouseLeave() {
             item.classList.remove('expanded')
-            // Remove the buttons when mouse leaves the task item
-            const buttons = item.querySelectorAll('.delete-button, .remove-button');
-            buttons.forEach(button => button.remove());
+            const buttons = item.querySelectorAll('.delete-button, .remove-button')
+            buttons.forEach(button => button.remove())
 
-            buttonsCreated = false; // Reset the flag when buttons are removed
-        });
+            buttonsCreated = false
+        }
+
+        item.addEventListener('click', handleMouseEnter)
+        item.addEventListener('mouseleave', handleMouseLeave)
     });
 }

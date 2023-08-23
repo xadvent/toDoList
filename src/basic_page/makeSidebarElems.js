@@ -5,69 +5,36 @@ import Plus from '../img/plus-thick.svg'
 import Projects from '../img/note-multiple.svg'
 import NewProject from '../img/plus-box.svg'
 
-const makeLi = function(name){
-    const navButton = document.createElement('button')
-    const NavText = document.createElement('p')
-    NavText.textContent = name
+const navigationItems = [
+    { name: 'Overview', id: 'overview', icon: Overview },
+    { name: 'Projects', id: 'projects', icon: Projects },
+    { name: 'This Week', id: 'week', icon: Weekly },
+    { name: 'Month', id: 'month', icon: Monthly },
+    { name: 'Add New', id: 'add-nav', icon: Plus },
+    { name: 'New Project', id: 'add-project', icon: NewProject }
+];
 
-    const newPic = new Image()
-    newPic.classList.add('nav-image')
-    switch (name) {
-        case "Overview":
-           newPic.src = Overview 
-           break;
-        case "This Week":
-            newPic.src = Weekly
-            break;
-        case "Month":
-            newPic.src = Monthly
-            break;
-        case "Projects":
-            newPic.src = Projects
-            break;
-        case "Add New":
-            newPic.src = Plus
-            break;
-        case "New Project":
-            newPic.src = NewProject
-            break;
-    };
-    
+const makeLi = function (item) {
+    const navButton = document.createElement('button');
+    const NavText = document.createElement('p');
+    NavText.textContent = item.name;
 
-    navButton.appendChild(newPic)
-    navButton.appendChild(NavText)
-    navButton.classList.add('nav-button')
+    const newPic = new Image();
+    newPic.classList.add('nav-image');
+    newPic.src = item.icon;
 
+    navButton.appendChild(newPic);
+    navButton.appendChild(NavText);
+    navButton.classList.add('nav-button');
+    navButton.id = item.id;
 
-    return navButton
-}
+    return navButton;
+};
 
-
-export default function(){
-    const sidebar = document.querySelector('#sidebar')
-
-    const overview = makeLi('Overview')
-    overview.id = 'overview'
-    sidebar.appendChild(overview)
-
-    const projects = makeLi('Projects')
-    projects.id = 'projects'
-    sidebar.appendChild(projects)
-
-    const thisWeek = makeLi('This Week')
-    thisWeek.id = 'week'
-    sidebar.appendChild(thisWeek)
-
-    const month = makeLi("Month")
-    month.id = 'month'
-    sidebar.appendChild(month)
-
-    const addNew = makeLi("Add New")
-    addNew.id = 'add-nav'
-    sidebar.appendChild(addNew)
-
-    const addProject = makeLi('New Project')
-    addProject.id = 'add-project'
-    sidebar.appendChild(addProject)
-    return
+export default function () {
+    const sidebar = document.querySelector('#sidebar');
+    navigationItems.forEach(item => {
+        const navButton = makeLi(item);
+        sidebar.appendChild(navButton);
+    });
 }

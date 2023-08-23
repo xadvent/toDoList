@@ -19,6 +19,16 @@
         transform: translateY(0);
     }
 }
+@keyframes slide-down-finished{
+    0% {
+        opacity: 1;
+        transform: translateY(0px)
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+}
 
 @keyframes slide-right {
     0% {
@@ -528,4 +538,15 @@ select:hover {
 
 #content .expanded>.date::before {
     content: 'Due date: ';
+}
+
+.project-card {
+    background-color: #fff;
+    padding: 10px;
+}
+
+.projects-tab {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

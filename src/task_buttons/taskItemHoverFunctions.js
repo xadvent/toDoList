@@ -1,19 +1,27 @@
-import { taskObj } from "../task_controls/objectHolders"
+import { allTaskManager } from "../task_controls/objectHolders"
+
+const getTaskByTitle = (current) => {
+    const infoTitle = current.parentElement.firstChild.textContent
+    const changingTask = allTaskManager.getRemove(infoTitle)
+    return changingTask
+}
 
 export const clickFinish = function () {
-    const infoTitle = this.parentElement.firstChild.textContent
-    const taskToFinish = taskObj.getRemove(infoTitle)
+    const taskToFinish = getTaskByTitle(this)
     if (taskToFinish) {
         taskToFinish.complete()
-        taskObj.refresh()
+        allTaskManager.refresh()
+    } else {
+        console.error("Task not found.")
     }
 }
 
 export const clickDelete = function () {
-    const infoTitle = this.parentElement.firstChild.textContent
-    const taskToRemove = taskObj.getRemove(infoTitle)
+    const taskToRemove = getTaskByTitle(this)
     if (taskToRemove) {
-        taskToRemove.removeSelf(taskObj.tasklist)
-        taskObj.refresh()
+        taskToRemove.removeSelf(allTaskManager.tasklist)
+        allTaskManager.refresh()
+    } else {
+        console.error('Task not found.')
     }
 }
