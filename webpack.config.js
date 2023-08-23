@@ -8,7 +8,7 @@ module.exports = {
     mode: 'production',
     entry: './src/main.js',
     output: {
-        filename: 'index_bundle.min.js',
+        filename: '[name].bundle.min.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
     },
@@ -46,7 +46,9 @@ module.exports = {
         ],
     },
     plugins: [
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Schedule Now: A To-Do List'
+        }),
         new MiniCssExtractPlugin(),
         //new NodePolyfillPlugin()
     ]

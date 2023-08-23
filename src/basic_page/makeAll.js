@@ -2,14 +2,10 @@ import makeSidebarElems from "./makeSidebarElems";
 import makeLogo from "./makeLogo"
 
 const body = document.querySelector('body')
-const pageTitle = document.head.querySelector('title')
 
 export default function () {
-    pageTitle.textContent = 'To-do List'
-
     const page = document.createElement('div')
     page.id = 'page'
-
 
     const header = document.createElement('div')
     header.id = 'header'
@@ -24,19 +20,14 @@ export default function () {
     header.appendChild(makeLogo)
     header.appendChild(title)
 
-    const makeSidebar = (function () {
-        const sidebar = document.createElement('div')
-        sidebar.id = 'sidebar'
-
-        page.appendChild(sidebar)
-    })()
+    const sidebar = document.createElement('div')
+    sidebar.id = 'sidebar'
 
     const content = document.createElement('div')
     content.id = 'content'
     page.appendChild(content)
     body.appendChild(page)
+    page.appendChild(sidebar)
 
     makeSidebarElems()
-
-
 }

@@ -1,7 +1,7 @@
 import { taskObj } from "../../taskControls/objectHolders"
 import { isPast } from "date-fns"
 import clearContentMake from "../clearContentMake"
-import { createNewButton } from "../sidebarTabCreation"
+import { createNewButton } from "../sidebarStuff/sidebarTabCreation"
 import { format } from "date-fns"
 
 // ADD : NAME to prevent error message from chrome... Not needed but do later

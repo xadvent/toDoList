@@ -1,8 +1,8 @@
-import { addNew } from "./formTab/addNew"
+import { addNew } from "../formTab/addNew"
 import { overview } from "./sidebarTabCreation"
 import { thisWeek } from "./sidebarTabCreation"
 import { month } from "./sidebarTabCreation"
-import { makeProjects } from "./projectsTab/display"
+import { makeProjects } from "../projectsTab/display"
 
 const listenerFx = function(buttonID, uniqueFunction){
     const current = document.querySelector(`#${buttonID}`)
