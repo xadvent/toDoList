@@ -50,6 +50,5 @@ module.exports = {
             title: 'Schedule Now: A To-Do List'
         }),
         new MiniCssExtractPlugin(),
-        //new NodePolyfillPlugin()
     ]
 }
