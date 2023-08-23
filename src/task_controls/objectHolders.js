@@ -1,5 +1,5 @@
 import { getDifference } from './getDate';
-import taskItemHover from '../taskButtons/taskItemHover';
+import taskItemHover from '../task_buttons/taskItemHover';
 
 class Task {
     constructor(title, description, importance, date) {

@@ -1,8 +1,8 @@
 import clearContentMake from "../clearContentMake"
 import Plus from '../../img/plus-thick.svg'
 import PlusProject from '../../img/plus-box.svg'
-import { taskObj } from "../../taskControls/objectHolders"
-import { addNew } from "../formTab/addNew"
+import { taskObj } from "../../task_controls/objectHolders"
+import { addNew } from "../form_tab/addNew"
 
 export const createNewButton = function (type) {
     const contentNewButton = document.createElement('button')
