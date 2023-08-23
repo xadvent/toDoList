@@ -1,6 +1,6 @@
 import { Projects } from "../../main";
 import clearContentMake from "../clearContentMake";
-import { createNewButton } from "../tabCreation";
+import { createNewButton } from "../sidebarTabCreation";
 
 export const makeProjects = function () {
     const content = clearContentMake('projects')

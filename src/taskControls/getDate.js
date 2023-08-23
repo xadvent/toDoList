@@ -1,4 +1,4 @@
-import { differenceInCalendarDays, formatRelative, startOfToday } from "date-fns";
+import { differenceInCalendarDays, startOfToday } from "date-fns";
 import { format } from 'date-fns'
 
 const totalTime = function (difference) {

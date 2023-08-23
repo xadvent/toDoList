@@ -1,4 +1,3 @@
-import { taskObj } from "../main";
 import { clickDelete } from "./taskItemHoverFunctions";
 import { clickFinish } from "./taskItemHoverFunctions";
 

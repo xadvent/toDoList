@@ -1,5 +1,5 @@
 
-import { taskObj } from "../main"
+import { taskObj } from "../taskControls/objectHolders"
 
 export const clickFinish = function () {
     const infoTitle = this.parentElement.firstChild.textContent

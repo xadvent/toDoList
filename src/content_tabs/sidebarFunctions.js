@@ -1,7 +1,7 @@
 import { addNew } from "./formTab/addNew"
-import { overview } from "./tabCreation"
-import { thisWeek } from "./tabCreation"
-import { month } from "./tabCreation"
+import { overview } from "./sidebarTabCreation"
+import { thisWeek } from "./sidebarTabCreation"
+import { month } from "./sidebarTabCreation"
 import { makeProjects } from "./projectsTab/display"
 
 const listenerFx = function(buttonID, uniqueFunction){

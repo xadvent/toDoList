@@ -1,9 +1,10 @@
-import { taskObj } from "../../main"
+import { taskObj } from "../../taskControls/objectHolders"
 import { isPast } from "date-fns"
 import clearContentMake from "../clearContentMake"
-import { createNewButton } from "../tabCreation"
+import { createNewButton } from "../sidebarTabCreation"
 import { format } from "date-fns"
 
+// ADD : NAME to prevent error message from chrome... Not needed but do later
 export const formLabelInput = (label, input, length) => {
     const newDiv = document.createElement('div')
     newDiv.classList.add('form-info')
@@ -45,18 +46,18 @@ export const submitFunction = function (event) {
         document.querySelector('#add-form').reset();
         return alert('Form Invalid: Entries must be at least 1 character.');
     }
+
     const dueDate = new Date(formDataObj.date);
     if (isPast(dueDate)) {
         return alert('Form Invalid: Date cannot be in the past.')
     }
+
     let dueDateFormatted;
     if (formDataObj.date === '') {
         dueDateFormatted = 'Never'
     } else {
         dueDateFormatted = format(new Date(formDataObj.date), 'yyyy-MM-dd')
     }
-
-    console.log(formDataObj);
 
     taskObj.addItem(formDataObj.title, formDataObj.description, formDataObj.importance, dueDateFormatted);
     clearContentMake('overview');
