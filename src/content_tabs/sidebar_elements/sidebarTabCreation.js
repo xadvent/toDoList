@@ -12,18 +12,19 @@ export const createNewButton = function (type) {
     addIcon.id = 'plus'
 
     const addName = document.createElement('p')
-    contentNewButton.id = 'add-button'
 
     switch (type) {
         case ('projects'):
             addName.textContent = 'New Project'
             addIcon.src = PlusProject
             // contentNewButton.onclick = 
+            contentNewButton.id = 'new-project-button'
             break;
         default:
             addName.textContent = 'Add New'
             contentNewButton.onclick = addNew
             addIcon.src = Plus
+            contentNewButton.id = 'add-button'
             break;
     }
 

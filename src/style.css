@@ -236,18 +236,31 @@ a {
     margin-bottom: 40px;
 }
 
-#sidebar #add-project:hover,
-.projects-tab #add-button:hover {
+#new-project-button:hover {
+    scale: 1.1;
+    color: black;
+    background-color: var(--high-priority);
+}
+#new-project-button {
+    transition: all 1s ease-in-out;
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#sidebar #add-project:hover{
     background-color: var(--high-priority);
 }
 
 #sidebar button:hover>.nav-image,
-#add-button:hover>#plus {
+#add-button:hover>#plus,
+#new-project-button:hover>#plus{
     filter: invert(0%);
 }
 
 #add-button,
-#form-submit {
+#form-submit,
+#new-project-button {
     height: 50px;
     width: 150px;
     background-color: black;
