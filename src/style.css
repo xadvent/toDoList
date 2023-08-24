@@ -1,9 +1,9 @@
 :root {
-    --highlight: lightskyblue;
-    --second-highlight: lightblue;
-    --low-priority: lightgreen;
-    --medium-priority: lightskyblue;
-    --high-priority: red;
+    --highlight: #87CEFA;
+    --second-highlight: #87CEFA;
+    --low-priority: #90EE8F;
+    --medium-priority: #87CEFA;
+    --high-priority: #f72222;
     --secondary: white;
     --main: black;
 }
