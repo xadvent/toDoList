@@ -1,8 +1,7 @@
-import { allTaskManager } from "../../task_controls/objectHolders"
-import { isPast } from "date-fns"
+import { isPast, format } from "date-fns"
 import clearContentMake from "../clearContentMake"
 import { createNewButton } from "../sidebar_elements/sidebarTabCreation"
-import { format } from "date-fns"
+import { projectContainer } from "../../task_controls/taskManagers"
 
 // ADD : NAME to prevent error message from chrome... Not needed but do later
 export const formLabelInput = (label, input, length) => {
@@ -64,8 +63,8 @@ export const submitFunction = function (event) {
     let dueDateFormatted;
     (formDataObj.date) ? dueDateFormatted = format(new Date(formDataObj.date), 'yyyy-MM-dd') : dueDateFormatted = 'Never'
 
-    allTaskManager.addItem(formDataObj.title, formDataObj.description, formDataObj.importance, dueDateFormatted);
+    projectContainer.allTaskManager.addTask(formDataObj.title, formDataObj.description, formDataObj.importance, dueDateFormatted);
     clearContentMake('overview');
-    allTaskManager.refresh();
+    projectContainer.allTaskManager.refresh();
     content.appendChild(createNewButton());
 };

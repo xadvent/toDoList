@@ -1,8 +1,8 @@
 import clearContentMake from "../clearContentMake"
 import Plus from '../../img/plus-thick.svg'
 import PlusProject from '../../img/plus-box.svg'
-import { allTaskManager } from "../../task_controls/objectHolders"
 import { addNew } from "../form_tab/addNew"
+import { projectContainer } from "../../task_controls/taskManagers"
 
 export const createNewButton = function (type) {
     const contentNewButton = document.createElement('button')
@@ -36,8 +36,8 @@ export const createNewButton = function (type) {
 
 export const overview = function () {
     const content = clearContentMake('overview')
-    allTaskManager.refresh()
     content.appendChild(createNewButton())
+    projectContainer.allTaskManager.refresh()
     return
 }
 
