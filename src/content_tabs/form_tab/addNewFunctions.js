@@ -17,7 +17,7 @@ export const formLabelInput = (label, input, length) => {
     let newInput; 
     if (input === 'textarea') {
         newInput = document.createElement('textarea')
-        newInput.setAttribute('cols', '30')
+        newInput.setAttribute('cols', '25')
         newInput.setAttribute('rows', '6')
     } else {
         newInput = document.createElement('input')
