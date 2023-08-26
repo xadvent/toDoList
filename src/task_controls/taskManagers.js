@@ -155,8 +155,23 @@ class ProjectContainer {
         });
     }
 
-    findProjectByTask(name){
-        return this.projectList.find(project => project.taskManager.getTask(name).title === name)
+    findProjectByTask(name) {
+        console.log(`Searching for task: "${name}"`);
+        const foundProject = this.projectList.find(project => {
+            const task = project.taskManager.getTask(name);
+            if (task && task.title) {
+                return task.title === name;
+            }
+            return false;
+        });
+    
+        if (foundProject) {
+            console.log(`Found project for task "${name}": ${foundProject.name}`);
+        } else {
+            console.log(`No project found for task "${name}"`);
+        }
+    
+        return foundProject;
     }
 
     displayOverview(){
@@ -166,7 +181,7 @@ class ProjectContainer {
     addProject(name) {
         const project = new Project(name);
         this.projectList.push(project);
-        this.displayProjects();
+        return this.displayProjects();
     }
 
     addTaskToProject(projectName, title, description, importance, date){
