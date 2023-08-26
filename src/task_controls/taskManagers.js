@@ -63,6 +63,9 @@ class TaskManager {
                         createdTask.appendChild(info);
                         break;
 
+                    case 'project':
+                        break;
+
                     default:
                         info.classList.add('task-info', key);
                         info.textContent = value;
@@ -146,7 +149,7 @@ class ProjectContainer {
             const incompleted = project.getIncompleted();
             const completed = project.getCompleted();
 
-            review.textContent = `${incompleted} tasks to do. ${completed} tasks finished!`;
+            review.textContent = `${incompleted ? incompleted + ' tasks to do. ': ''} ${completed ? completed + ' tasks finished!': ''} `;
 
             card.appendChild(title);
             card.appendChild(review);
@@ -188,6 +191,7 @@ class ProjectContainer {
         const project = this.projectList.find(project => projectName === project.name)
         project.taskManager.addTask(title, description, importance, date)
         this.allTaskManager.addTask(title, description, importance, date)
+        this.storeProjects()
     }
 
     storeProjects() {
@@ -208,7 +212,7 @@ class ProjectContainer {
 
 const storeStuff = function (name, value) {
     try {
-        localStorage.setItem(name, JSON.stringify(value));
+        window.localStorage.setItem(name, JSON.stringify(value));
     } catch (error) {
         console.error('Error storing data:', error);
     }

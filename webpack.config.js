@@ -12,7 +12,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         clean: true,
     },
-    devtool: false,
+    devtool: 'source-map',
     optimization: {
         minimize: true,
         minimizer: [

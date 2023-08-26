@@ -27,6 +27,7 @@ export const clickFinish = function () {
             taskToFinish.changingProjectTask.toggleCompletion();
         }
         projectContainer.allTaskManager.refresh();
+        projectContainer.storeProjects()
     } else {
         console.error("Task not found.");
     }

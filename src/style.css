@@ -444,25 +444,14 @@ a {
 
 #add-form .form-info label {
     font-size: 18px;
-
 }
 
-.form-info input {
+
+.form-info input,
+.form-info textarea {
     padding: 5px 10px;
     font-size: 16px;
-    transition: all 0.4s ease-in-out;
     border: none;
-}
-
-.form-info input:hover,
-.form-info input:focus-visible {
-    outline: none;
-    scale: 1.05;
-    background-color: var(--highlight);
-}
-
-.form-info input:valid {
-    background-color: var(--highlight);
 }
 
 .form-info select {

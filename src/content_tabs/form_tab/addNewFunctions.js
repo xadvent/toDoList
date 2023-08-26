@@ -9,18 +9,26 @@ export const formLabelInput = (label, input, length) => {
     container.classList.add('form-info')
 
     const newLabel = document.createElement('label')
-    const newInput = document.createElement('input')
     const formattedName = label[0].toUpperCase() + label.substr(1)
 
     newLabel.setAttribute('for', label)
     newLabel.textContent = formattedName
+
+    let newInput; 
+    if (input === 'textarea') {
+        newInput = document.createElement('textarea')
+        newInput.setAttribute('cols', '30')
+        newInput.setAttribute('rows', '6')
+    } else {
+        newInput = document.createElement('input')
+        newInput.type = input
+    }
 
     newInput.id = label
     newInput.setAttribute('required', '')
     newInput.minLength = 1
     newInput.maxLength = length
     newInput.name = label
-    newInput.type = input
 
     container.appendChild(newLabel)
     container.appendChild(newInput)
@@ -34,7 +42,7 @@ export const createOption = function (value, textContent) {
     return option
 }
 
-const validateForm = (formDataObj) =>{
+const validateForm = (formDataObj) => {
     if (formDataObj.title.length < 1 || formDataObj.description.length < 1) {
         return 'Form Invalid: Entries must be at least 1 character.';
     }
@@ -63,7 +71,7 @@ export const submitFunction = function (event) {
     let dueDateFormatted;
     (formDataObj.date) ? dueDateFormatted = format(new Date(formDataObj.date), 'yyyy-MM-dd') : dueDateFormatted = 'Never'
 
-    projectContainer.allTaskManager.addTask(formDataObj.title, formDataObj.description, formDataObj.importance, dueDateFormatted);
+    projectContainer.addTaskToProject(formDataObj.project, formDataObj.title, formDataObj.description, formDataObj.importance, dueDateFormatted);
     clearContentMake('overview');
     projectContainer.allTaskManager.refresh();
     content.appendChild(createNewButton());
