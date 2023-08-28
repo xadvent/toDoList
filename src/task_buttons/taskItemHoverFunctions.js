@@ -1,15 +1,16 @@
 import { projectContainer } from "../task_controls/taskManagers";
+import { addNew } from "../content_tabs/form_tab/addNew";
 
 const getTaskByTitle = (current) => {
-    const infoTitle = current.parentElement.firstChild.textContent;
-    const changingTask = projectContainer.allTaskManager.getTask(infoTitle);
+    const infoTitle = current.parentElement.parentElement.firstChild.textContent;
+    const mainTask = projectContainer.allTaskManager.getTask(infoTitle);
 
-    const changingProject = projectContainer.findProjectByTask(infoTitle)
+    const taskProject = projectContainer.findProjectByTask(infoTitle)
 
     return {
-        changingTask,
-        changingProject,
-        changingProjectTask: changingProject ? changingProject.taskManager.getTask(infoTitle) : null
+        mainTask,
+        taskProject,
+        projectTask: taskProject ? taskProject.taskManager.getTask(infoTitle) : null
     };
 };
 
@@ -17,12 +18,12 @@ const getTaskByTitle = (current) => {
 export const clickFinish = function () {
     const taskToFinish = getTaskByTitle(this);
     if (taskToFinish) {
-        if (taskToFinish.changingTask) {
-            taskToFinish.changingTask.toggleCompletion();
+        if (taskToFinish.mainTask) {
+            taskToFinish.mainTask.toggleCompletion();
 
         }
-        if (taskToFinish.changingProjectTask) {
-            taskToFinish.changingProjectTask.toggleCompletion();
+        if (taskToFinish.projectTask) {
+            taskToFinish.projectTask.toggleCompletion();
         }
         projectContainer.allTaskManager.refresh();
         projectContainer.storeProjects()
@@ -35,10 +36,22 @@ export const clickFinish = function () {
 export const clickDelete = function () {
     const taskToRemove = getTaskByTitle(this);
     if (taskToRemove) {
-        taskToRemove.changingTask.removeFromList(projectContainer.allTaskManager.tasklist)
-        taskToRemove.changingProjectTask.removeFromList(taskToRemove.changingProject.taskManager.tasklist)
+        taskToRemove.mainTask.removeFromList(projectContainer.allTaskManager.tasklist)
+        taskToRemove.projectTask.removeFromList(taskToRemove.taskProject.taskManager.tasklist)
         projectContainer.allTaskManager.refresh();
     } else {
         console.error('Task not found.');
     }
 };
+
+export const editTask = function(){
+    addNew()
+    document.querySelector('.new-form-tab h1').textContent = 'Edit Task'
+
+    const holder = getTaskByTitle(this)
+
+    document.querySelectorAll('.form-info')
+
+    holder.mainTask.removeFromList(projectContainer.allTaskManager.tasklist)
+    holder.projectTask.removeFromList(holder.taskProject.taskManager.tasklist)
+}

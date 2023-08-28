@@ -467,12 +467,12 @@ select:hover {
 
 
 /* While Expanded */
-.button-fade-in {
+.button-container>.button-fade-in {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
 
-.button-fade-in.visible {
+.button-container>.button-fade-in.visible {
     opacity: 1;
 }
 
@@ -483,15 +483,21 @@ select:hover {
     padding-right: 0px;
     overflow: auto;
 }
+.button-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 15vh;
+    gap: 10px;
+    animation: slide-right 1.5s ease;
+}
 
-.task-item button {
+.task-item .button-container button {
     background-color: inherit;
     border: none;
     font-size: 20px;
     transition: all 0.5s ease-in-out;
-    justify-self: flex-end;
     width: 50%;
-    height: 20%;
     align-self: center;
 }
 
@@ -506,7 +512,7 @@ select:hover {
     align-self: center;
 }
 
-.finished>.delete-button:before {
+.finished .button-container>.delete-button:before {
     content: 'Undo ';
 }
 
@@ -521,7 +527,7 @@ select:hover {
     cursor: auto;
 }
 
-#content .expanded>button {
+#content .expanded .button-container button {
     height: 50px;
     border-radius: 10px;
     cursor: pointer;

@@ -102,6 +102,9 @@ export class Project {
         if (taskToRemove) {
             taskToRemove.removeFromList(this.taskManager.tasklist);
         }
+        else {
+            console.error('Task not found: ' + title)
+        }
     }
 
     toggleCompletionInTask(title){
@@ -110,9 +113,6 @@ export class Project {
             taskToComplete.toggleCompletion();
             return taskToComplete.completed
         }
-    }
-
-    removeInProject(title){
     }
 
     display() {
@@ -150,8 +150,10 @@ class ProjectContainer {
             const completed = project.getCompleted();
 
             // Add: task(s) instead of just tasks
-            review.textContent = `${incompleted ? incompleted + ' tasks to do. ': ''} ${completed ? completed + ' tasks finished!': ''} `;
+            const incompletedSentence = `${incompleted && incompleted != 1 ? incompleted + ' tasks to do. ' : incompleted ? incompleted + ' task to do. ' : '' }`
+            const completedSentence = `${completed && completed != 1 ? completed + ' tasks finished!': completed ? completed + ' task finished!' : ''} `;
 
+            review.textContent = incompletedSentence + completedSentence
             card.appendChild(title);
             card.appendChild(review);
             content.appendChild(card)
