@@ -6,8 +6,6 @@ const getTaskByTitle = (current) => {
 
     const changingProject = projectContainer.findProjectByTask(infoTitle)
 
-    console.log(changingProject)
-
     return {
         changingTask,
         changingProject,

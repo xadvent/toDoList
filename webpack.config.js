@@ -8,11 +8,11 @@ module.exports = {
     mode: 'production',
     entry: './src/main.js',
     output: {
-        filename: 'main.bundle.min.js',
+        filename: '[name].bundle.min.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
     },
-    devtool: false,
+    devtool: 'source-map',
     optimization: {
         minimize: true,
         minimizer: [

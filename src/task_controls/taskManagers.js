@@ -149,6 +149,7 @@ class ProjectContainer {
             const incompleted = project.getIncompleted();
             const completed = project.getCompleted();
 
+            // Add: task(s) instead of just tasks
             review.textContent = `${incompleted ? incompleted + ' tasks to do. ': ''} ${completed ? completed + ' tasks finished!': ''} `;
 
             card.appendChild(title);
@@ -159,7 +160,6 @@ class ProjectContainer {
     }
 
     findProjectByTask(name) {
-        console.log(`Searching for task: "${name}"`);
         const foundProject = this.projectList.find(project => {
             const task = project.taskManager.getTask(name);
             if (task && task.title) {
@@ -167,12 +167,6 @@ class ProjectContainer {
             }
             return false;
         });
-    
-        if (foundProject) {
-            console.log(`Found project for task "${name}": ${foundProject.name}`);
-        } else {
-            console.log(`No project found for task "${name}"`);
-        }
     
         return foundProject;
     }
