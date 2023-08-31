@@ -180,7 +180,7 @@ class ProjectContainer {
     addProject(name) {
         const project = new Project(name);
         this.projectList.push(project);
-        return this.displayProjects();
+        return 
     }
 
     addTaskToProject(projectName, title, description, importance, date){

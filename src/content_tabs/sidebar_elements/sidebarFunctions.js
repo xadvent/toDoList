@@ -3,6 +3,7 @@ import { makeProjects } from "../projects_tab/display"
 import { overview } from "./sidebarTabCreation"
 import { thisWeek } from "./sidebarTabCreation"
 import { month } from "./sidebarTabCreation"
+import { projectForm } from "../projects_tab/projectForm"
 
 const listenerFx = function(buttonID, uniqueFunction){
     const current = document.querySelector(`#${buttonID}`)
@@ -15,4 +16,5 @@ export default function () {
     listenerFx('month', month)
     listenerFx('add-nav', addNew)
     listenerFx('projects', makeProjects)
+    listenerFx('add-project', projectForm)
 }

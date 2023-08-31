@@ -237,6 +237,10 @@ a {
     color: var(--main);
     cursor: pointer;
 }
+.add-project-tab #form-submit:hover{
+    background-color: var(--high-priority);
+    color: var(white);
+}
 
 #add-button {
     justify-self: center;
@@ -323,6 +327,9 @@ a {
 
 .new-form-tab h1 {
     color: var(--highlight);
+}
+.add-project-tab h1 {
+    color: var(--high-priority);
 }
 
 
@@ -426,7 +433,7 @@ a {
     color: white;
 }
 
-#add-form .form-info {
+.form-info {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -434,7 +441,8 @@ a {
     gap: 5px;
 }
 
-#content #add-form {
+#content #add-form,
+#content #new-project {
     display: flex;
     margin-top: 20px;
     flex-direction: column;

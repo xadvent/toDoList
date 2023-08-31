@@ -6,11 +6,11 @@ const totalTime = function (difference) {
     const months = Math.floor((difference / 365 ) / 30)
     const days = Math.floor(difference % 30)
 
-    return `${years > 0 ? years + ' years, ' : ''}${months > 0 ? months + ' months, ' : ''}${days} days.`;
+    return `${years > 0 ? years + ' years, ' : ''}${months > 0 ? months + ' months, ' : ''}${days} days.`
 }
 
 export const getDifference = function (taskDate) {
-    if (taskDate === 'Never' || taskDate.split('-').includes('NaN')) return 'Never'
+    if (taskDate === 'Never' || taskDate.split('-').includes('NaN') || !taskDate) return 'Never'
 
     let taskSplit = taskDate.split('-')
     const today = format(startOfToday(), 'yyyy MM dd').split(' ')

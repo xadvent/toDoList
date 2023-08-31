@@ -34,6 +34,7 @@ export const addNew = function () {
     const importancePicker = document.createElement('select');
     importancePicker.setAttribute('name', 'importance');
     importancePicker.setAttribute('required', '');
+    importancePicker.id = 'importance'
 
     // Create importance options
     const opt1 = createOption('high-priority', 'High');
@@ -52,6 +53,7 @@ export const addNew = function () {
 
     // Create the date input field
     const setDate = document.createElement('input');
+    setDate.id = 'date'
     setDate.classList.add('form-date');
     setDate.setAttribute('type', 'date');
     setDate.setAttribute('name', 'date');
