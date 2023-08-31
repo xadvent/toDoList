@@ -64,7 +64,7 @@ export const submitFunction = function (event) {
 
     const validationError = validateForm(formDataObj)
     if (validationError) {
-        document.querySelector('#add-form').reset()
+        //document.querySelector('#add-form').reset()
         return alert(validationError)
     }
 

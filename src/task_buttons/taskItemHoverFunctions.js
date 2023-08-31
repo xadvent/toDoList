@@ -46,9 +46,13 @@ export const clickDelete = function () {
 
 export const editTask = function(){
     addNew()
-    document.querySelector('.new-form-tab h1').textContent = 'Edit Task'
-
     const holder = getTaskByTitle(this)
+    document.querySelector('.new-form-tab h1').textContent = 'Edit Task'
+    document.querySelector(`input[name='title']`).value = holder.mainTask.title
+    document.querySelector('textarea').textContent = holder.mainTask.description
+    document.querySelector('select[name="importance"]').value = holder.mainTask.importance
+    document.querySelector('select[id="project"]').value = holder.taskProject.name
+    document.querySelector('input[type="date"]').value = holder.mainTask.date
 
     document.querySelectorAll('.form-info')
 

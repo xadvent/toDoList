@@ -522,7 +522,7 @@ select:hover {
     flex-direction: column;
     padding-top: 10px;
     padding-bottom: 10px;
-    gap: 10px;
+    gap: 5px;
     justify-content: center;
     cursor: auto;
 }
