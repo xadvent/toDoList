@@ -9,5 +9,14 @@ export const makeProjects = function () {
     const button = createNewButton('projects')
     button.addEventListener('click', projectForm)
     content.appendChild(button)
+
+    const projectList = document.querySelectorAll('.project-card')
+    projectList.forEach(project => project.addEventListener('click', displayOnClick))
     return
+}
+
+const displayOnClick = function(){
+   console.log(this)
+   clearContentMake('overview')
+   projectContainer.displayChosenProject(this.id)
 }
