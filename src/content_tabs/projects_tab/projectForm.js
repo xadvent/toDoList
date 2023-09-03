@@ -1,5 +1,6 @@
 import { projectContainer } from "../../task_controls/taskManagers";
 import clearContentMake from "../clearContentMake";
+import { makeProjects } from "./display";
 
 export const projectForm = function(){
     const content = document.querySelector('#content')
@@ -46,6 +47,6 @@ const submitForm = function(event){
     myFormData.forEach((value, key) => formDataObj[key] = value);
     projectContainer.addProject(formDataObj.project)
     clearContentMake('projects-tab')
-    projectContainer.displayProjects()
+    makeProjects()
     return
 }
