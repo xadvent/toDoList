@@ -16,9 +16,19 @@ const getTaskByTitle = (current) => {
     };
 };
 
+const displayTab = function(){
+    const projectH1 = document.querySelector('#project-showing')
+    if (projectH1) {
+        projectContainer.displayChosenProject(projectH1.textContent)
+    } else {
+        projectContainer.allTaskManager.refresh()
+    }
+}
+
 
 export const clickFinish = function () {
     const taskToFinish = getTaskByTitle(this);
+    const projectName = document.querySelector('#project-showing')
     if (taskToFinish) {
         if (taskToFinish.mainTask) {
             taskToFinish.mainTask.toggleCompletion();
@@ -27,8 +37,10 @@ export const clickFinish = function () {
         if (taskToFinish.projectTask) {
             taskToFinish.projectTask.toggleCompletion();
         }
-        projectContainer.allTaskManager.refresh();
+
+        displayTab()
         projectContainer.storeProjects()
+
     } else {
         console.error("Task not found.");
     }
@@ -40,7 +52,7 @@ export const clickDelete = function () {
     if (taskToRemove) {
         taskToRemove.mainTask.removeFromList(projectContainer.allTaskManager.tasklist)
         taskToRemove.projectTask.removeFromList(taskToRemove.taskProject.taskManager.tasklist)
-        projectContainer.allTaskManager.refresh();
+        displayTab()
     } else {
         console.error('Task not found.');
     }

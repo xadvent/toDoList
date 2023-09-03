@@ -213,5 +213,11 @@ const storeStuff = function (name, value) {
         console.error('Error storing data:', error);
     }
 };
+const getStored = function(){
+    window.localStorage.forEach(project =>{
+        projectAsString = localStorage.getItem(project)
+        const projectAsObject = JSON.parse(projectAsString)
+    })
+}
 
 export const projectContainer = new ProjectContainer();

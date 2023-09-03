@@ -15,8 +15,18 @@ export const makeProjects = function () {
     return
 }
 
-const displayOnClick = function(){
-   console.log(this)
-   clearContentMake('overview')
-   projectContainer.displayChosenProject(this.id)
+const displayOnClick = function () {
+    const content = document.querySelector('#content')
+    clearContentMake('overview')
+
+    const newH1 = document.createElement('h1')
+    newH1.textContent = this.id
+    newH1.id = 'project-showing'
+    content.append(newH1)
+
+    projectContainer.displayChosenProject(this.id)
+
+
+    const button = createNewButton()
+    content.appendChild(button)
 }

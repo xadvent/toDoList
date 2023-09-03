@@ -579,3 +579,8 @@ select:hover {
     padding-left: 5vw;
     cursor: pointer;
 }
+
+.overview-tab h1{
+    order: -20;
+    color: white;
+}
