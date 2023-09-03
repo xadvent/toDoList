@@ -3,6 +3,9 @@ import { formLabelInput, createOption, submitFunction } from "./addNewFunctions"
 import { projectContainer } from "../../task_controls/taskManagers";
 
 export const addNew = function () {
+    // Checking if in project tab
+    const projectH1 = document.querySelector('#project-showing')
+
     // Clear existing content and create the form element
     const content = clearContentMake('new-form');
     const formElement = document.createElement('form');
@@ -104,6 +107,9 @@ export const addNew = function () {
     submitButton.id = 'form-submit';
     submitButton.textContent = 'Submit';
     submitButton.addEventListener('click', submitFunction);
+
+    // If opened in project tab - autofill value of project
+    if (projectH1) projectSelect.value = projectH1.textContent
 
     // Append elements to the content
     content.appendChild(newH1);
