@@ -15,7 +15,7 @@ export const makeProjects = function () {
     return
 }
 
-const displayOnClick = function () {
+export const displayOnClick = function () {
     const content = document.querySelector('#content')
     clearContentMake('overview')
 

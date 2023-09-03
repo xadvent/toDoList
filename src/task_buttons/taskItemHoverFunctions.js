@@ -59,6 +59,7 @@ export const clickDelete = function () {
 };
 
 export const editTask = function () {
+    const projectH1 = document.querySelector('#project-showing')
     addNew()
     const holder = getTaskByTitle(this)
     const title = document.querySelector(`input[name='title']`)
@@ -107,10 +108,22 @@ export const editTask = function () {
             holder.mainTask.date = date.value;
             holder.taskProject.name = project.value;
 
-            overview()
-            projectContainer.allTaskManager.refresh();
+            if (projectH1 && projectH1.textContent === holder.taskProject.name){
+                overview() 
+                document.querySelector('#content').appendChild(projectH1)
+                projectContainer.displayChosenProject(projectH1.textContent)
+            } else {
+                overview()
+                projectContainer.allTaskManager.refresh();
+            }
         } else {
-            overview()
+            if (projectH1 && projectH1.textContent === holder.taskProject.name){
+                overview() 
+                document.querySelector('#content').appendChild(projectH1)
+                projectContainer.displayChosenProject(projectH1.textContent)
+            } else {
+                overview()
+            }
         }
     }
 
