@@ -69,6 +69,8 @@ export const editTask = function () {
     const date = document.querySelector('input[type="date"]')
     const button = document.querySelector('button[type="submit"]')
 
+    if (projectH1) project.parentElement.remove()
+
     document.querySelector('.new-form-tab h1').textContent = 'Edit Task'
 
     title.value = holder.mainTask.title
@@ -103,12 +105,20 @@ export const editTask = function () {
         if (isFormChanged) {
             // Update the task properties with the new values
             holder.mainTask.title = title.value;
+            holder.projectTask.title = title.value
+
             holder.mainTask.description = description.value;
+            holder.projectTask.description = description.value
+
             holder.mainTask.importance = importance.value;
+            holder.projectTask.importance = importance.value
+
             holder.mainTask.date = date.value;
-            holder.taskProject.name = project.value;
+            holder.projectTask.date = date.value
+
 
             if (projectH1 && projectH1.textContent === holder.taskProject.name){
+                projectContainer.allTaskManager.refresh()
                 overview() 
                 document.querySelector('#content').appendChild(projectH1)
                 projectContainer.displayChosenProject(projectH1.textContent)
