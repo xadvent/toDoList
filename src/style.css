@@ -410,7 +410,7 @@ a {
     white-space: nowrap;
     text-overflow: ellipsis;
     font-weight: 500;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 .overview-tab .date {
@@ -489,7 +489,6 @@ select:hover {
     width: 100%;
     padding-left: 0px;
     padding-right: 0px;
-    overflow: auto;
 }
 .button-container {
     display: flex;
