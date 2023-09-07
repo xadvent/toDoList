@@ -8,6 +8,7 @@ const getTaskByTitle = (current) => {
     const mainTask = projectContainer.allTaskManager.getTask(infoTitle);
 
     const taskProject = projectContainer.findProjectByTask(infoTitle)
+    console.log(infoTitle, mainTask, taskProject)
 
     return {
         mainTask,
@@ -16,7 +17,7 @@ const getTaskByTitle = (current) => {
     };
 };
 
-const displayTab = function(){
+const displayTab = function () {
     const projectH1 = document.querySelector('#project-showing')
     if (projectH1) {
         projectContainer.displayChosenProject(projectH1.textContent)
@@ -27,36 +28,25 @@ const displayTab = function(){
 
 
 export const clickFinish = function () {
-    const taskToFinish = getTaskByTitle(this);
-    const projectName = document.querySelector('#project-showing')
-    if (taskToFinish) {
-        if (taskToFinish.mainTask) {
-            taskToFinish.mainTask.toggleCompletion();
+    const { mainTask, projectTask, taskProject} = getTaskByTitle(this);
 
-        }
-        if (taskToFinish.projectTask) {
-            taskToFinish.projectTask.toggleCompletion();
-        }
+    mainTask?.toggleCompletion()
+    taskProject.toggleCompletionInTask(projectTask.title)
 
-        displayTab()
-        projectContainer.storeProjects()
-
-    } else {
-        console.error("Task not found.");
-    }
+    displayTab();
+    projectContainer.storeProjects();
 };
 
 
 export const clickDelete = function () {
-    const taskToRemove = getTaskByTitle(this);
-    if (taskToRemove) {
-        taskToRemove.mainTask.removeFromList(projectContainer.allTaskManager.tasklist)
-        taskToRemove.projectTask.removeFromList(taskToRemove.taskProject.taskManager.tasklist)
-        displayTab()
-    } else {
-        console.error('Task not found.');
-    }
+    const { mainTask, projectTask, taskProject} = getTaskByTitle(this);
+
+    mainTask?.removeFromList(projectContainer.allTaskManager.tasklist);
+    projectTask?.removeFromList(taskProject.taskManager.tasklist)
+
+    displayTab();
 };
+
 
 export const editTask = function () {
     const projectH1 = document.querySelector('#project-showing')
@@ -94,7 +84,7 @@ export const editTask = function () {
     const initialFormData = serializeForm(document.querySelector('#add-form'));
 
     // Function to check for changes and submit the form
-    const checkAndSubmit = function(event) {
+    const checkAndSubmit = function (event) {
         event.preventDefault();
 
         // Serialize the current form data
@@ -117,9 +107,9 @@ export const editTask = function () {
             holder.projectTask.date = date.value
 
 
-            if (projectH1 && projectH1.textContent === holder.taskProject.name){
+            if (projectH1 && projectH1.textContent === holder.taskProject.name) {
                 projectContainer.allTaskManager.refresh()
-                overview() 
+                overview()
                 document.querySelector('#content').appendChild(projectH1)
                 projectContainer.displayChosenProject(projectH1.textContent)
             } else {
@@ -127,8 +117,8 @@ export const editTask = function () {
                 projectContainer.allTaskManager.refresh();
             }
         } else {
-            if (projectH1 && projectH1.textContent === holder.taskProject.name){
-                overview() 
+            if (projectH1 && projectH1.textContent === holder.taskProject.name) {
+                overview()
                 document.querySelector('#content').appendChild(projectH1)
                 projectContainer.displayChosenProject(projectH1.textContent)
             } else {

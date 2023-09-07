@@ -1,7 +1,7 @@
 import { getDifference } from './getDate';
 import taskItemHover from '../task_buttons/taskItemHover';
 
-class Task {
+export class Task {
     constructor(title, description, importance, date) {
         this.title = title;
         this.description = description;
@@ -39,33 +39,33 @@ class TaskManager {
     refresh() {
         const content = document.querySelector('#content');
         this.clear();
-        if (this.tasklist.length < 1) return
-
+        if (this.tasklist.length < 1) return;
+    
         this.tasklist.forEach(task => {
             const createdTask = document.createElement('div');
             createdTask.classList.add('task-item');
-
+    
             for (const [key, value] of Object.entries(task)) {
                 const info = document.createElement('h3');
-
+    
                 switch (key) {
                     case 'importance':
                         createdTask.classList.add(value);
                         break;
-
+    
                     case 'completed':
-                        value ? createdTask.classList.add('finished'): null;
+                        value ? createdTask.classList.add('finished') : null;
                         break;
-
+    
                     case 'date':
                         info.textContent = getDifference(value);
                         info.classList.add('task-info', key);
                         createdTask.appendChild(info);
                         break;
-
+    
                     case 'project':
                         break;
-
+    
                     default:
                         info.classList.add('task-info', key);
                         info.textContent = value;
@@ -75,19 +75,34 @@ class TaskManager {
             }
             content.appendChild(createdTask);
         });
-
+    
+        // Attach event listeners to the task items
         taskItemHover();
-        storeStuff('tasks', this.tasklist);
     }
+    
 
     addTask(title, description, importance, date) {
         const newTask = new Task(title, description, importance, date);
         this.clear();
         this.tasklist.push(newTask);
     }
+    static fromJSON(data) {
+        const project = new Project(data.name);
+        project.taskManager = TaskManager.fromJSON(data.taskManager); // Convert the TaskManager from JSON
+        return project;
+    }
+
+    toJSON() {
+        return {
+            tasklist: this.tasklist,
+        };
+    }
+    store(){
+        storeStuff('tasks', this.tasklist)
+    }
 }
 
-export class Project {
+class Project {
     constructor(name) {
         this.name = name;
         this.taskManager = new TaskManager();
@@ -126,6 +141,26 @@ export class Project {
     getCompleted() {
         return this.taskManager.tasklist.filter(task => task.completed).length;
     }
+
+    toJSON() {
+        return {
+            name: this.name,
+            taskManager: this.taskManager
+        }
+    }
+
+    static fromJSON(data) {
+        const project = new Project(data.name);
+        
+        if (data.taskManager) {
+            const taskManager = new TaskManager();
+            taskManager.tasklist = data.taskManager.tasklist;
+            project.taskManager = taskManager;
+        }
+        
+        return project;
+    }
+    
 }
 
 class ProjectContainer {
@@ -180,6 +215,7 @@ class ProjectContainer {
     addProject(name) {
         const project = new Project(name);
         this.projectList.push(project);
+        this.storeProjects()
         return 
     }
 
@@ -193,6 +229,7 @@ class ProjectContainer {
     storeProjects() {
         this.projectList.forEach((project, index) => {
             storeStuff(`project-${index}`, project);
+            this.allTaskManager.store()
         });
     }
 
@@ -204,6 +241,11 @@ class ProjectContainer {
             console.error('Project not found.');
         }
     }
+    
+    checkIfData(){
+        checkGetStored()
+        this.allTaskManager.refresh()
+    }
 }
 
 const storeStuff = function (name, value) {
@@ -213,11 +255,45 @@ const storeStuff = function (name, value) {
         console.error('Error storing data:', error);
     }
 };
-const getStored = function(){
-    window.localStorage.forEach(project =>{
-        projectAsString = localStorage.getItem(project)
-        const projectAsObject = JSON.parse(projectAsString)
-    })
-}
 
 export const projectContainer = new ProjectContainer();
+
+const loadProjectsFromLocalStorage = () => {
+    // Loop through all items in localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+
+        // Check if the key starts with "project-" to identify project-related data
+        if (key.startsWith("project-")) {
+            const projectAsString = localStorage.getItem(key);
+
+            // Parse the JSON data into a JavaScript object
+            const projectData = JSON.parse(projectAsString);
+
+            // Log the loaded project data for debugging
+
+            if (projectData && projectData.name) {
+                const project = Project.fromJSON(projectData)
+                projectContainer.projectList.push(project)
+                project.taskManager.tasklist.forEach(item => projectContainer.addTaskToProject(project.name, item.title, item.description, item.importance, item.date))
+            }
+        } 
+    }
+}
+
+const checkGetStored = function(){
+    if (Object.keys('tasks') in window.localStorage) {
+        loadProjectsFromLocalStorage()
+    } else {
+        projectContainer.addProject('Homework')
+        projectContainer.addTaskToProject('Homework', 'Daily Assignment', 'Do the daily assignment for whatever class it is you\'re taking right now. Everybody knows that it is dumb, but what can you do.', 'high-priority', 'Never')
+        const message = 'Finish my paper regarding the legality of cloning T-rex\'s.'
+        projectContainer.addTaskToProject('Homework', "Paper", message, 'high-priority', 'Never')
+
+        projectContainer.addProject('Writing pages')
+        projectContainer.addTaskToProject('Writing pages', 'Script One', 'Write hella pages of script 4 and come up with a good ending.', 'medium-priority', '2023-08-30')
+        projectContainer.addTaskToProject('Writing pages', 'Script Two', 'Finish Script 5 by the deadline.', 'medium-priority', '2023-09-20')
+    }
+}
+
+//  Stop items from unfinishing in CSS when complete or reloaded 
