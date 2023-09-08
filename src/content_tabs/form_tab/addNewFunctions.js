@@ -54,7 +54,7 @@ const validateForm = (formDataObj) => {
     return null; // Validation passed
 }
 
-export const submitFunction = function (event) {
+export const submitFunction = function (event, name) {
     event.preventDefault();
     const content = document.querySelector('#content');
     const myFormData = new FormData(document.querySelector('#add-form'));
@@ -72,6 +72,12 @@ export const submitFunction = function (event) {
     (formDataObj.date) ? dueDateFormatted = format(new Date(formDataObj.date), 'yyyy-MM-dd') : dueDateFormatted = 'Never'
 
     projectContainer.addTaskToProject(formDataObj.project, formDataObj.title, formDataObj.description, formDataObj.importance, dueDateFormatted);
+    if (name) {
+        projectContainer.allTaskManager.refresh()
+        overview()
+        document.querySelector('#content').appendChild(projectH1)
+        projectContainer.displayChosenProject(name)
+    }
     clearContentMake('overview');
     projectContainer.allTaskManager.refresh();
     content.appendChild(createNewButton());

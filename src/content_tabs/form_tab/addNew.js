@@ -106,10 +106,12 @@ export const addNew = function () {
     submitButton.type = 'submit';
     submitButton.id = 'form-submit';
     submitButton.textContent = 'Submit';
-    submitButton.addEventListener('click', submitFunction);
+    submitButton.addEventListener('click', submitFunction)
 
     // If opened in project tab - autofill value of project
-    if (projectH1) projectSelect.value = projectH1.textContent
+    if (projectH1) {
+        projectSelect.value = projectH1.textContent
+    }
 
     // Append elements to the content
     content.appendChild(newH1);
