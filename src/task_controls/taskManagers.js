@@ -2,16 +2,16 @@ import { getDifference } from './getDate';
 import taskItemHover from '../task_buttons/taskItemHover';
 
 export class Task {
-    constructor(title, description, importance, date) {
+    constructor(title, description, importance, date, completed) {
         this.title = title;
         this.description = description;
         this.importance = importance;
-        this.completed = false;
+        this.completed = completed ? completed : false;
         this.date = date;
     }
 
     toggleCompletion() {
-        this.completed = !this.completed;
+        return this.completed = !this.completed;
     }
 
     removeFromList(tasklist) {
@@ -19,6 +19,11 @@ export class Task {
         if (index !== -1) {
             tasklist.splice(index, 1);
         }
+    }
+
+    static fromJSON(data){
+        const task = new Task(data.title, data.description, data.importance, data.date, data.completed);
+        return task;
     }
 }
 
@@ -81,8 +86,8 @@ class TaskManager {
     }
     
 
-    addTask(title, description, importance, date) {
-        const newTask = new Task(title, description, importance, date);
+    addTask(title, description, importance, date, completed) {
+        const newTask = new Task(title, description, importance, date, completed);
         this.clear();
         this.tasklist.push(newTask);
     }
@@ -154,7 +159,10 @@ class Project {
         
         if (data.taskManager) {
             const taskManager = new TaskManager();
-            taskManager.tasklist = data.taskManager.tasklist;
+            data.taskManager.tasklist.forEach(task =>{
+                const newTask = Task.fromJSON(task)
+                taskManager.tasklist.push(newTask)
+            })
             project.taskManager = taskManager;
         }
         
@@ -270,19 +278,22 @@ const loadProjectsFromLocalStorage = () => {
             // Parse the JSON data into a JavaScript object
             const projectData = JSON.parse(projectAsString);
 
-            // Log the loaded project data for debugging
-
             if (projectData && projectData.name) {
-                const project = Project.fromJSON(projectData)
-                projectContainer.projectList.push(project)
-                project.taskManager.tasklist.forEach(item => projectContainer.addTaskToProject(project.name, item.title, item.description, item.importance, item.date))
+                const project = Project.fromJSON(projectData);
+                projectContainer.projectList.push(project);
+                project.taskManager.tasklist.forEach(task => {
+                    const newTask = Task.fromJSON(task)
+                    projectContainer.allTaskManager.tasklist.push(newTask)
+                })
             }
         } 
+        projectContainer.allTaskManager.refresh()
     }
 }
 
-const checkGetStored = function(){
-    if (Object.keys('tasks') in window.localStorage) {
+
+export const checkGetStored = function(){
+    if (localStorage.getItem('tasks') !== null) {
         loadProjectsFromLocalStorage()
     } else {
         projectContainer.addProject('Homework')
@@ -295,5 +306,6 @@ const checkGetStored = function(){
         projectContainer.addTaskToProject('Writing pages', 'Script Two', 'Finish Script 5 by the deadline.', 'medium-priority', '2023-09-20')
     }
 }
+
 
 //  Stop items from unfinishing in CSS when complete or reloaded 

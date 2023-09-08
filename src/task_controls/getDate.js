@@ -10,7 +10,7 @@ const totalTime = function (difference) {
 }
 
 export const getDifference = function (taskDate) {
-    if (taskDate === 'Never' || taskDate.split('-').includes('NaN') || !taskDate) return 'Never'
+    if (taskDate === 'Never' ||  !taskDate) return 'Never'
 
     let taskSplit = taskDate.split('-')
     const today = format(startOfToday(), 'yyyy MM dd').split(' ')

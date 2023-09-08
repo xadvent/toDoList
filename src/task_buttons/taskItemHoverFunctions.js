@@ -1,11 +1,11 @@
-import { projectContainer } from "../task_controls/taskManagers";
-import { addNew } from "../content_tabs/form_tab/addNew";
-import { submitFunction } from "../content_tabs/form_tab/addNewFunctions";
-import { overview } from "../content_tabs/sidebar_elements/sidebarTabCreation";
+import { projectContainer } from "../task_controls/taskManagers"
+import { addNew } from "../content_tabs/form_tab/addNew"
+import { submitFunction } from "../content_tabs/form_tab/addNewFunctions"
+import { overview } from "../content_tabs/sidebar_elements/sidebarTabCreation"
 
 const getTaskByTitle = (current) => {
-    const infoTitle = current.parentElement.parentElement.firstChild.textContent;
-    const mainTask = projectContainer.allTaskManager.getTask(infoTitle);
+    const infoTitle = current.parentElement.parentElement.firstChild.textContent
+    const mainTask = projectContainer.allTaskManager.getTask(infoTitle)
 
     const taskProject = projectContainer.findProjectByTask(infoTitle)
     console.log(infoTitle, mainTask, taskProject)
@@ -28,10 +28,10 @@ const displayTab = function () {
 
 
 export const clickFinish = function () {
-    const { mainTask, projectTask, taskProject} = getTaskByTitle(this);
+    const { mainTask, projectTask, taskProject} = getTaskByTitle(this)
 
     mainTask?.toggleCompletion()
-    taskProject.toggleCompletionInTask(projectTask.title)
+    taskProject?.toggleCompletionInTask(projectTask.title)
 
     displayTab();
     projectContainer.storeProjects();
@@ -39,13 +39,14 @@ export const clickFinish = function () {
 
 
 export const clickDelete = function () {
-    const { mainTask, projectTask, taskProject} = getTaskByTitle(this);
+    const { mainTask, projectTask, taskProject} = getTaskByTitle(this)
 
-    mainTask?.removeFromList(projectContainer.allTaskManager.tasklist);
+    mainTask?.removeFromList(projectContainer.allTaskManager.tasklist)
     projectTask?.removeFromList(taskProject.taskManager.tasklist)
 
-    displayTab();
-};
+    displayTab()
+    projectContainer.storeProjects()
+}
 
 
 export const editTask = function () {
@@ -125,6 +126,7 @@ export const editTask = function () {
                 overview()
             }
         }
+        projectContainer.storeProjects()
     }
 
     const submitButton = document.querySelector('button[type="submit"]');

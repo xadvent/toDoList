@@ -15,31 +15,37 @@ export default function () {
         let buttonsCreated = false; 
 
         function handleMouseEnter(event) {
-            item.classList.add('expanded')
+            item.classList.add('expanded');
             if (!buttonsCreated) {
-                const containerDiv = document.createElement('div')
-                containerDiv.classList.add('button-container')
-
-                const finishBox = createButton('Finish', 'delete-button', clickFinish)
-                const deleteBox = createButton('Delete', 'remove-button', clickDelete)
-                const editBox = createButton('Edit', 'edit-button', editTask)
-
-                this.appendChild(containerDiv)
-                containerDiv.appendChild(finishBox)
-                containerDiv.appendChild(editBox)
-                containerDiv.appendChild(deleteBox)
-
+                const containerDiv = document.createElement('div');
+                containerDiv.classList.add('button-container');
+        
+                const finishBox = createButton('Finish', 'delete-button', clickFinish);
+                const deleteBox = createButton('Delete', 'remove-button', clickDelete);
+                const editBox = createButton('Edit', 'edit-button', editTask);
+        
+                // Attach event listeners to the dynamically created buttons
+                finishBox.onclick = clickFinish;
+                deleteBox.onclick = clickDelete;
+                editBox.onclick = editTask;
+        
+                this.appendChild(containerDiv);
+                containerDiv.appendChild(finishBox);
+                containerDiv.appendChild(editBox);
+                containerDiv.appendChild(deleteBox);
+        
                 setTimeout(() => {
-                    finishBox.classList.add('visible')
-                    deleteBox.classList.add('visible')
-                    editBox.classList.add('visible')
+                    finishBox.classList.add('visible');
+                    deleteBox.classList.add('visible');
+                    editBox.classList.add('visible');
                 }, 10);
-
+        
                 buttonsCreated = true;
-            } else{
-                handleMouseLeave()
+            } else {
+                handleMouseLeave();
             }
         }
+        
 
         function handleMouseLeave() {
             item.classList.remove('expanded')
