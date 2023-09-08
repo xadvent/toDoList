@@ -65,8 +65,7 @@ export const editTask = function () {
     document.querySelector('.new-form-tab h1').textContent = 'Edit Task'
 
     // Added to stop projects from changing - RE-ADD LATER
-    project.parentElement.remove()
-    //project.value = holder.taskProject.name
+    project.value = holder.taskProject.name
 
     title.value = holder.mainTask.title
     description.textContent = holder.mainTask.description

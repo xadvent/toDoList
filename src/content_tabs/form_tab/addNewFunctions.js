@@ -72,13 +72,13 @@ export const submitFunction = function (event, name) {
     (formDataObj.date) ? dueDateFormatted = format(new Date(formDataObj.date), 'yyyy-MM-dd') : dueDateFormatted = 'Never'
 
     projectContainer.addTaskToProject(formDataObj.project, formDataObj.title, formDataObj.description, formDataObj.importance, dueDateFormatted);
-    if (name) {
-        projectContainer.allTaskManager.refresh()
-        overview()
-        document.querySelector('#content').appendChild(projectH1)
-        projectContainer.displayChosenProject(name)
-    }
     clearContentMake('overview');
     projectContainer.allTaskManager.refresh();
     content.appendChild(createNewButton());
+    if (name) {
+        clearContentMake('overview')
+        content.appendChild(name)
+        projectContainer.displayChosenProject(name.textContent)
+        content.appendChild(createNewButton());
+    }
 };
