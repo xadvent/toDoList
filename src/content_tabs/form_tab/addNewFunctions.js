@@ -50,6 +50,9 @@ const validateForm = (formDataObj) => {
     if (isPast(dueDate)) {
         return 'Form Invalid: Date cannot be in the past.';
     }
+    if (formDataObj.project == null){
+        return 'Form Invalid: Project must be selected.'
+    }
 
     return null; // Validation passed
 }

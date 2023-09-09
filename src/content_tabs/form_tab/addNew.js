@@ -98,6 +98,8 @@ export const addNew = function () {
         return projectSelect.appendChild(newOption)
     })
 
+    projectH1 ? projectSelect.value = projectH1.textContent : null
+
     projectDiv.appendChild(projectLabel)
     projectDiv.appendChild(projectSelect)
 
@@ -110,10 +112,9 @@ export const addNew = function () {
     const doFunction = function(event) {
         event.preventDefault()
         if (projectH1){
-            projectSelect.value = projectH1.textContent
             submitFunction(event, projectH1)
         } else {
-            submitFunction(event, projectH1)
+            submitFunction(event)
         }
     }
 

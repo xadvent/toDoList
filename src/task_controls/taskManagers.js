@@ -22,7 +22,12 @@ export class Task {
     }
 
     static fromJSON(data){
-        const task = new Task(data.title, data.description, data.importance, data.date, data.completed);
+        const task = new Task(data.title, 
+            data.description, 
+            data.importance, 
+            data.date, 
+            data.completed
+            );
         return task;
     }
 }
@@ -105,9 +110,13 @@ class TaskManager {
     store(){
         storeStuff('tasks', this.tasklist)
     }
+
+    removeAll(taskArray) {
+        taskArray.forEach(task => task.removeFromList(this.tasklist))
+    }
 }
 
-class Project {
+export class Project {
     constructor(name) {
         this.name = name;
         this.taskManager = new TaskManager();
@@ -168,13 +177,18 @@ class Project {
         
         return project;
     }
-    
 }
 
 class ProjectContainer {
     constructor() {
         this.projectList = [];
         this.allTaskManager = new TaskManager()
+    }
+
+    deleteProject(name){
+        const deletedProject = this.projectList.find(project => project.name === name)
+        this.projectList.splice(this.projectList.indexOf(deletedProject), 1)
+        this.allTaskManager.removeAll(deletedProject.taskManager.tasklist)
     }
 
     displayProjects() {
@@ -249,11 +263,6 @@ class ProjectContainer {
             console.error('Project not found.');
         }
     }
-    
-    checkIfData(){
-        checkGetStored()
-        this.allTaskManager.refresh()
-    }
 }
 
 const storeStuff = function (name, value) {
@@ -265,47 +274,3 @@ const storeStuff = function (name, value) {
 };
 
 export const projectContainer = new ProjectContainer();
-
-const loadProjectsFromLocalStorage = () => {
-    // Loop through all items in localStorage
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-
-        // Check if the key starts with "project-" to identify project-related data
-        if (key.startsWith("project-")) {
-            const projectAsString = localStorage.getItem(key);
-
-            // Parse the JSON data into a JavaScript object
-            const projectData = JSON.parse(projectAsString);
-
-            if (projectData && projectData.name) {
-                const project = Project.fromJSON(projectData);
-                projectContainer.projectList.push(project);
-                project.taskManager.tasklist.forEach(task => {
-                    const newTask = Task.fromJSON(task)
-                    projectContainer.allTaskManager.tasklist.push(newTask)
-                })
-            }
-        } 
-        projectContainer.allTaskManager.refresh()
-    }
-}
-
-
-export const checkGetStored = function(){
-    if (localStorage.getItem('tasks') !== null) {
-        loadProjectsFromLocalStorage()
-    } else {
-        projectContainer.addProject('Homework')
-        projectContainer.addTaskToProject('Homework', 'Daily Assignment', 'Do the daily assignment for whatever class it is you\'re taking right now. Everybody knows that it is dumb, but what can you do.', 'high-priority', 'Never')
-        const message = 'Finish my paper regarding the legality of cloning T-rex\'s.'
-        projectContainer.addTaskToProject('Homework', "Paper", message, 'high-priority', 'Never')
-
-        projectContainer.addProject('Writing pages')
-        projectContainer.addTaskToProject('Writing pages', 'Script One', 'Write hella pages of script 4 and come up with a good ending.', 'medium-priority', '2023-08-30')
-        projectContainer.addTaskToProject('Writing pages', 'Script Two', 'Finish Script 5 by the deadline.', 'medium-priority', '2023-09-20')
-    }
-}
-
-
-//  Stop items from unfinishing in CSS when complete or reloaded 
