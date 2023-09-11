@@ -111,11 +111,7 @@ export const addNew = function () {
 
     const doFunction = function(event) {
         event.preventDefault()
-        if (projectH1){
-            submitFunction(event, projectH1)
-        } else {
-            submitFunction(event)
-        }
+        submitFunction(event, projectH1)
     }
 
     submitButton.addEventListener('click', doFunction)
