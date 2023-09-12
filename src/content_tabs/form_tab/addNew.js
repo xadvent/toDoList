@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import clearContentMake from "../clearContentMake";
 import { formLabelInput, createOption, submitFunction } from "./addNewFunctions";
 import { projectContainer } from "../../task_controls/taskManagers";

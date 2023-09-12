@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { clickDelete, clickFinish, editTask } from "./taskItemHoverFunctions";
 
 function createButton(text, className, clickHandler) {

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 /* eslint-disable import/no-extraneous-dependencies */
 import { isPast, format } from "date-fns"
 import clearContentMake from "../clearContentMake"
@@ -73,8 +72,14 @@ export const submitFunction = function (event){
     let dueDateFormatted;
     (formDataObj.date) ? dueDateFormatted = format(new Date(formDataObj.date), 'yyyy-MM-dd') : dueDateFormatted = 'Never'
 
+    const projectTitle = document.createElement('h1')
+    projectTitle.id = 'project-showing'
+    projectTitle.textContent = formDataObj.project
+
     projectContainer.addTaskToProject(formDataObj.project, formDataObj.title, formDataObj.description, formDataObj.importance, dueDateFormatted);
     clearContentMake('overview');
     projectContainer.allTaskManager.refresh();
+    content.appendChild(projectTitle)
+    projectContainer.displayChosenProject(formDataObj.project)
     content.appendChild(createNewButton());
 };

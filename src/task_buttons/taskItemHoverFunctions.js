@@ -1,6 +1,5 @@
 /* eslint-disable func-names */
 // Arrow functions stop all usability of task-buttons
-/* eslint-disable import/no-cycle */
 import { projectContainer } from "../task_controls/taskManagers"
 import addNew from "../content_tabs/form_tab/addNew";
 import { submitFunction } from "../content_tabs/form_tab/addNewFunctions"

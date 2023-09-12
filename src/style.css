@@ -588,3 +588,7 @@ select:hover {
     visibility: hidden;
     display: none;
 }
+
+#project-showing::before {
+    content:"Project: ";
+}

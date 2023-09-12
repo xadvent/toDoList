@@ -36,8 +36,14 @@ export const createNewButton = function (type) {
 
 
 export const overview = function () {
+    const contentBox = document.querySelector('#content')
+    const overviewH1 = document.createElement('h1')
+    overviewH1.textContent = "Overview"
+    
     const content = clearContentMake('overview')
+    contentBox.appendChild(overviewH1)
     content.appendChild(createNewButton())
+
     projectContainer.allTaskManager.refresh()
     
 }

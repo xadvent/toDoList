@@ -1,7 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable max-classes-per-file */
 import getDifferenceDate from './getDifferenceDate';
-// eslint-disable-next-line import/no-cycle
 import taskItemHover from '../task_buttons/taskItemHover';
 
 const storeStuff = function (name, value) {
