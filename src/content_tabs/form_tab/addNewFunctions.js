@@ -50,14 +50,11 @@ const validateForm = (formDataObj) => {
     if (isPast(dueDate)) {
         return 'Form Invalid: Date cannot be in the past.';
     }
-    if (formDataObj.project == null){
-        return 'Form Invalid: Project must be selected.'
-    }
 
     return null; // Validation passed
 }
 
-export const submitFunction = function (event, name) {
+export const submitFunction = function (event) {
     event.preventDefault();
     const content = document.querySelector('#content');
     const myFormData = new FormData(document.querySelector('#add-form'));
@@ -78,10 +75,4 @@ export const submitFunction = function (event, name) {
     clearContentMake('overview');
     projectContainer.allTaskManager.refresh();
     content.appendChild(createNewButton());
-    if (name) {
-        clearContentMake('overview')
-        content.appendChild(name)
-        projectContainer.displayChosenProject(name.textContent)
-        content.appendChild(createNewButton());
-    }
 };

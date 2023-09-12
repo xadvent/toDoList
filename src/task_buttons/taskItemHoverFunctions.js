@@ -64,12 +64,10 @@ export const editTask = function () {
 
     document.querySelector('.new-form-tab h1').textContent = 'Edit Task'
 
-    // Added to stop projects from changing - RE-ADD LATER
-    project.value = holder.taskProject.name
-
     title.value = holder.mainTask.title
     description.textContent = holder.mainTask.description
     importance.value = holder.mainTask.importance
+    project.value = holder.taskProject.name
     date.value = holder.mainTask.date
 
 

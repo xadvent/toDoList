@@ -1,5 +1,5 @@
 import clearContentMake from "../clearContentMake";
-import { formLabelInput, createOption, submitFunction} from "./addNewFunctions";
+import { formLabelInput, createOption, submitFunction } from "./addNewFunctions";
 import { projectContainer } from "../../task_controls/taskManagers";
 
 export const addNew = function () {
@@ -98,8 +98,6 @@ export const addNew = function () {
         return projectSelect.appendChild(newOption)
     })
 
-    projectH1 ? projectSelect.value = projectH1.textContent : null
-
     projectDiv.appendChild(projectLabel)
     projectDiv.appendChild(projectSelect)
 
@@ -108,13 +106,10 @@ export const addNew = function () {
     submitButton.type = 'submit';
     submitButton.id = 'form-submit';
     submitButton.textContent = 'Submit';
+    submitButton.addEventListener('click', submitFunction);
 
-    const doFunction = function(event) {
-        event.preventDefault()
-        submitFunction(event, projectH1)
-    }
-
-    submitButton.addEventListener('click', doFunction)
+    // If opened in project tab - autofill value of project
+    if (projectH1) projectSelect.value = projectH1.textContent
 
     // Append elements to the content
     content.appendChild(newH1);
