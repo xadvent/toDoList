@@ -1,8 +1,16 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable max-classes-per-file */
-import { getDifference } from './getDate';
+import getDifferenceDate from './getDifferenceDate';
 // eslint-disable-next-line import/no-cycle
 import taskItemHover from '../task_buttons/taskItemHover';
+
+const storeStuff = function (name, value) {
+    try {
+        window.localStorage.setItem(name, JSON.stringify(value));
+    } catch (error) {
+        console.error('Error storing data:', error);
+    }
+};
 
 export class Task {
     constructor(title, description, importance, date, completed) {
@@ -66,7 +74,7 @@ class TaskManager {
                         break;
     
                     case 'date':
-                        info.textContent = getDifference(value);
+                        info.textContent = getDifferenceDate(value);
                         info.classList.add('task-info', key);
                         createdTask.appendChild(info);
                         break;
@@ -95,12 +103,6 @@ class TaskManager {
         this.tasklist.push(newTask);
     }
 
-    static fromJSON(data) {
-        const project = new Project(data.name);
-        project.taskManager = TaskManager.fromJSON(data.taskManager); // Convert the TaskManager from JSON
-        return project;
-    }
-
     toJSON() {
         return {
             tasklist: this.tasklist,
@@ -112,7 +114,7 @@ class TaskManager {
     }
 }
 
-class Project {
+export class Project {
     constructor(name) {
         this.name = name;
         this.taskManager = new TaskManager();
@@ -204,7 +206,6 @@ class ProjectContainer {
             card.appendChild(title);
             card.appendChild(review);
             content.appendChild(card)
-            
         });
     }
 
@@ -228,10 +229,10 @@ class ProjectContainer {
         const project = new Project(name);
         this.projectList.push(project);
         this.storeProjects()
-         
     }
 
     addTaskToProject(projectName, title, description, importance, date){
+        // eslint-disable-next-line no-shadow
         const project = this.projectList.find(project => projectName === project.name)
         project.taskManager.addTask(title, description, importance, date)
         this.allTaskManager.addTask(title, description, importance, date)
@@ -255,56 +256,5 @@ class ProjectContainer {
     }
 }
 
-const storeStuff = function (name, value) {
-    try {
-        window.localStorage.setItem(name, JSON.stringify(value));
-    } catch (error) {
-        console.error('Error storing data:', error);
-    }
-};
 
 export const projectContainer = new ProjectContainer();
-
-const loadProjectsFromLocalStorage = () => {
-    // Loop through all items in localStorage
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-
-        // Check if the key starts with "project-" to identify project-related data
-        if (key.startsWith("project-")) {
-            const projectAsString = localStorage.getItem(key);
-
-            // Parse the JSON data into a JavaScript object
-            const projectData = JSON.parse(projectAsString);
-
-            if (projectData && projectData.name) {
-                const project = Project.fromJSON(projectData);
-                projectContainer.projectList.push(project);
-                project.taskManager.tasklist.forEach(task => {
-                    const newTask = Task.fromJSON(task)
-                    projectContainer.allTaskManager.tasklist.push(newTask)
-                })
-            }
-        } 
-        projectContainer.allTaskManager.refresh()
-    }
-}
-
-
-export const checkGetStored = function(){
-    if (localStorage.getItem('tasks') !== null) {
-        loadProjectsFromLocalStorage()
-    } else {
-        projectContainer.addProject('Homework')
-        projectContainer.addTaskToProject('Homework', 'Daily Assignment', 'Do the daily assignment for whatever class it is you\'re taking right now. Everybody knows that it is dumb, but what can you do.', 'high-priority', 'Never')
-        const message = 'Finish my paper regarding the legality of cloning T-rex\'s.'
-        projectContainer.addTaskToProject('Homework', "Paper", message, 'high-priority', 'Never')
-
-        projectContainer.addProject('Writing pages')
-        projectContainer.addTaskToProject('Writing pages', 'Script One', 'Write hella pages of script 4 and come up with a good ending.', 'medium-priority', '2023-08-30')
-        projectContainer.addTaskToProject('Writing pages', 'Script Two', 'Finish Script 5 by the deadline.', 'medium-priority', '2023-09-20')
-    }
-}
-
-
-//  Stop items from unfinishing in CSS when complete or reloaded 

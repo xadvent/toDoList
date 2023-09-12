@@ -1,8 +1,7 @@
 import clearContentMake from "../clearContentMake";
 import { createNewButton } from "../sidebar_elements/sidebarTabCreation";
 import { projectContainer } from "../../task_controls/taskManagers";
-// eslint-disable-next-line import/no-cycle
-import { projectForm } from "./projectForm";
+import projectForm from "./projectForm";
 
 export const displayOnClick = function(){
     const content = document.querySelector('#content')

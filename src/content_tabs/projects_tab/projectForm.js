@@ -1,8 +1,7 @@
-import { projectContainer } from "../../task_controls/taskManagers";
 import clearContentMake from "../clearContentMake";
-import { makeProjects } from "./display";
+import projectFormSubmit from "./projectFormSubmit";
 
-export const projectForm = function(){
+export default function(){
     const content = document.querySelector('#content')
     const header = document.createElement('h1')
     const form = document.createElement('form')
@@ -26,7 +25,7 @@ export const projectForm = function(){
     submitButton.type = 'submit';
     submitButton.id = 'form-submit';
     submitButton.textContent = 'Submit';
-    submitButton.addEventListener('click', submitForm);
+    submitButton.addEventListener('click', projectFormSubmit);
 
     clearContentMake('add-project')
 
@@ -37,16 +36,4 @@ export const projectForm = function(){
 
     content.appendChild(header)
     content.appendChild(form)
-}
-
-const submitForm = function(event){
-    event.preventDefault()
-    const myFormData = new FormData(document.querySelector('#new-project'));
-
-    const formDataObj = {};
-    myFormData.forEach((value, key) => formDataObj[key] = value);
-    projectContainer.addProject(formDataObj.project)
-    clearContentMake('projects-tab')
-    makeProjects()
-    return
 }

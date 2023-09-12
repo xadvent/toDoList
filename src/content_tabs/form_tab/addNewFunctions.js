@@ -3,7 +3,6 @@
 import { isPast, format } from "date-fns"
 import clearContentMake from "../clearContentMake"
 import { createNewButton } from "../sidebar_elements/sidebarTabCreation"
-// eslint-disable-next-line import/no-cycle
 import { projectContainer } from "../../task_controls/taskManagers"
 
 // ADD : NAME to prevent error message from chrome... Not needed but do later

@@ -583,3 +583,8 @@ select:hover {
     order: -20;
     color: white;
 }
+
+.hidden {
+    visibility: hidden;
+    display: none;
+}

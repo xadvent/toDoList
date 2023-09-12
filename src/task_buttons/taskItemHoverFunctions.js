@@ -74,6 +74,7 @@ export const editTask = function(){
     project.value = holder.taskProject.name
     date.value = holder.mainTask.date
 
+    project.parentElement.classList.add('hidden')
 
     // Function to serialize form data into an object
     function serializeForm(form) {

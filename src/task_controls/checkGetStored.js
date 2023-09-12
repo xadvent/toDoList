@@ -23,8 +23,7 @@ const loadProjectsFromLocalStorage = () => {
     }
 }
 
-
-export const checkGetStored = function(){
+export default function(){
     if (localStorage.getItem('tasks') !== null) {
         loadProjectsFromLocalStorage()
     } else {

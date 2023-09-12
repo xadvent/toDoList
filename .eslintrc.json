@@ -21,6 +21,7 @@
         "no-alert":"off",
         "no-unused-expressions":"off",
         "func-names":"off",
-        "no-restricted-imports":"off"
+        "no-restricted-imports":"off",
+        "class-methods-use-this":"off"
     }
 }
