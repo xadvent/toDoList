@@ -18,6 +18,9 @@
         "no-underscore-dangle":"off",
         "no-console":"off",
         "consistent-return":"off",
-        "no-alert":"off"
+        "no-alert":"off",
+        "no-unused-expressions":"off",
+        "func-names":"off",
+        "no-restricted-imports":"off"
     }
 }

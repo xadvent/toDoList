@@ -1,7 +1,8 @@
+/* eslint-disable import/no-cycle */
 import clearContentMake from "../clearContentMake"
 import Plus from '../../img/plus-thick.svg'
 import PlusProject from '../../img/plus-box.svg'
-import { addNew } from "../form_tab/addNew"
+import addNew from "../form_tab/addNew"
 import { projectContainer } from "../../task_controls/taskManagers"
 
 export const createNewButton = function (type) {
@@ -38,7 +39,7 @@ export const overview = function () {
     const content = clearContentMake('overview')
     content.appendChild(createNewButton())
     projectContainer.allTaskManager.refresh()
-    return
+    
 }
 
 export const thisWeek = function () {

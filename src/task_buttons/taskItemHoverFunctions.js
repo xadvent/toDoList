@@ -1,5 +1,8 @@
+/* eslint-disable func-names */
+// Arrow functions stop all usability of task-buttons
+/* eslint-disable import/no-cycle */
 import { projectContainer } from "../task_controls/taskManagers"
-import { addNew } from "../content_tabs/form_tab/addNew"
+import addNew from "../content_tabs/form_tab/addNew";
 import { submitFunction } from "../content_tabs/form_tab/addNewFunctions"
 import { overview } from "../content_tabs/sidebar_elements/sidebarTabCreation"
 
@@ -17,7 +20,7 @@ const getTaskByTitle = (current) => {
     };
 };
 
-const displayTab = function () {
+const displayTab = function() {
     const projectH1 = document.querySelector('#project-showing')
     if (projectH1) {
         projectContainer.displayChosenProject(projectH1.textContent)
@@ -27,7 +30,7 @@ const displayTab = function () {
 }
 
 
-export const clickFinish = function () {
+export const clickFinish = function(){
     const { mainTask, projectTask, taskProject} = getTaskByTitle(this)
 
     mainTask?.toggleCompletion()
@@ -38,7 +41,7 @@ export const clickFinish = function () {
 };
 
 
-export const clickDelete = function () {
+export const clickDelete = function() {
     const { mainTask, projectTask, taskProject} = getTaskByTitle(this)
 
     mainTask?.removeFromList(projectContainer.allTaskManager.tasklist)
@@ -48,8 +51,9 @@ export const clickDelete = function () {
     projectContainer.storeProjects()
 }
 
-
-export const editTask = function () {
+// DO NOT MAKE ARROW FUNCTION !!!
+// eslint-disable-next-line func-names
+export const editTask = function(){
     const projectH1 = document.querySelector('#project-showing')
     addNew()
     const holder = getTaskByTitle(this)
@@ -85,7 +89,7 @@ export const editTask = function () {
     const initialFormData = serializeForm(document.querySelector('#add-form'));
 
     // Function to check for changes and submit the form
-    const checkAndSubmit = function (event) {
+    const checkAndSubmit = (event) => {
         event.preventDefault();
 
         // Serialize the current form data
@@ -117,15 +121,13 @@ export const editTask = function () {
                 overview()
                 projectContainer.allTaskManager.refresh();
             }
-        } else {
-            if (projectH1 && projectH1.textContent === holder.taskProject.name) {
+        } else if (projectH1 && projectH1.textContent === holder.taskProject.name) {
                 overview()
                 document.querySelector('#content').appendChild(projectH1)
                 projectContainer.displayChosenProject(projectH1.textContent)
             } else {
                 overview()
             }
-        }
         projectContainer.storeProjects()
     }
 

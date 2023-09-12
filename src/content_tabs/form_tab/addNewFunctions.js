@@ -1,6 +1,9 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/no-extraneous-dependencies */
 import { isPast, format } from "date-fns"
 import clearContentMake from "../clearContentMake"
 import { createNewButton } from "../sidebar_elements/sidebarTabCreation"
+// eslint-disable-next-line import/no-cycle
 import { projectContainer } from "../../task_controls/taskManagers"
 
 // ADD : NAME to prevent error message from chrome... Not needed but do later
@@ -54,7 +57,7 @@ const validateForm = (formDataObj) => {
     return null; // Validation passed
 }
 
-export const submitFunction = function (event) {
+export const submitFunction = function (event){
     event.preventDefault();
     const content = document.querySelector('#content');
     const myFormData = new FormData(document.querySelector('#add-form'));
@@ -64,7 +67,7 @@ export const submitFunction = function (event) {
 
     const validationError = validateForm(formDataObj)
     if (validationError) {
-        //document.querySelector('#add-form').reset()
+        // document.querySelector('#add-form').reset()
         return alert(validationError)
     }
 

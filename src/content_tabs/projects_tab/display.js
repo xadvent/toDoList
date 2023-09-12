@@ -1,21 +1,10 @@
 import clearContentMake from "../clearContentMake";
 import { createNewButton } from "../sidebar_elements/sidebarTabCreation";
 import { projectContainer } from "../../task_controls/taskManagers";
+// eslint-disable-next-line import/no-cycle
 import { projectForm } from "./projectForm";
 
-export const makeProjects = function () {
-    const content = clearContentMake('projects')
-    projectContainer.displayProjects()
-    const button = createNewButton('projects')
-    button.addEventListener('click', projectForm)
-    content.appendChild(button)
-
-    const projectList = document.querySelectorAll('.project-card')
-    projectList.forEach(project => project.addEventListener('click', displayOnClick))
-    return
-}
-
-export const displayOnClick = function () {
+export const displayOnClick = function(){
     const content = document.querySelector('#content')
     clearContentMake('overview')
 
@@ -26,7 +15,17 @@ export const displayOnClick = function () {
 
     projectContainer.displayChosenProject(this.id)
 
-
     const button = createNewButton()
     content.appendChild(button)
+}
+
+export const makeProjects = function () {
+    const content = clearContentMake('projects')
+    projectContainer.displayProjects()
+    const button = createNewButton('projects')
+    button.addEventListener('click', projectForm)
+    content.appendChild(button)
+
+    const projectList = document.querySelectorAll('.project-card')
+    projectList.forEach(project => project.addEventListener('click', displayOnClick))
 }

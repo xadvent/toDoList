@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { clickDelete, clickFinish, editTask } from "./taskItemHoverFunctions";
 
 function createButton(text, className, clickHandler) {
@@ -8,13 +9,24 @@ function createButton(text, className, clickHandler) {
     return button
 }
 
-export default function () {
+export default () => {
     const taskItems = document.querySelectorAll('.task-item');
 
     taskItems.forEach(item => {
         let buttonsCreated = false; 
 
-        function handleMouseEnter(event) {
+        function handleMouseLeave() {
+            item.classList.remove('expanded')
+            const buttons = item.querySelectorAll('.delete-button, .remove-button, .edit-button')
+            buttons.forEach(button => button.remove())
+
+            const containerDiv = document.querySelector('.button-container')
+            containerDiv? containerDiv.remove() : null
+
+            buttonsCreated = false
+        }
+
+        function handleMouseEnter() {
             item.classList.add('expanded');
             if (!buttonsCreated) {
                 const containerDiv = document.createElement('div');
@@ -46,19 +58,8 @@ export default function () {
             }
         }
         
-
-        function handleMouseLeave() {
-            item.classList.remove('expanded')
-            const buttons = item.querySelectorAll('.delete-button, .remove-button, .edit-button')
-            buttons.forEach(button => button.remove())
-
-            const containerDiv = document.querySelector('.button-container')
-            containerDiv? containerDiv.remove() : null
-
-            buttonsCreated = false
-        }
-
         item.addEventListener('click', handleMouseEnter)
         item.addEventListener('mouseleave', handleMouseLeave)
-    });
+    }
+    );
 }

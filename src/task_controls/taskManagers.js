@@ -1,4 +1,7 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable max-classes-per-file */
 import { getDifference } from './getDate';
+// eslint-disable-next-line import/no-cycle
 import taskItemHover from '../task_buttons/taskItemHover';
 
 export class Task {
@@ -6,7 +9,7 @@ export class Task {
         this.title = title;
         this.description = description;
         this.importance = importance;
-        this.completed = completed ? completed : false;
+        this.completed = completed || false;
         this.date = date;
     }
 
@@ -91,6 +94,7 @@ class TaskManager {
         this.clear();
         this.tasklist.push(newTask);
     }
+
     static fromJSON(data) {
         const project = new Project(data.name);
         project.taskManager = TaskManager.fromJSON(data.taskManager); // Convert the TaskManager from JSON
@@ -102,6 +106,7 @@ class TaskManager {
             tasklist: this.tasklist,
         };
     }
+
     store(){
         storeStuff('tasks', this.tasklist)
     }
@@ -123,7 +128,7 @@ class Project {
             taskToRemove.removeFromList(this.taskManager.tasklist);
         }
         else {
-            console.error('Task not found: ' + title)
+            console.error(`Task not found: ${  title}`)
         }
     }
 
@@ -168,7 +173,6 @@ class Project {
         
         return project;
     }
-    
 }
 
 class ProjectContainer {
@@ -193,14 +197,14 @@ class ProjectContainer {
             const completed = project.getCompleted();
 
             // Add: task(s) instead of just tasks
-            const incompletedSentence = `${incompleted && incompleted != 1 ? incompleted + ' tasks to do. ' : incompleted ? incompleted + ' task to do. ' : '' }`
-            const completedSentence = `${completed && completed != 1 ? completed + ' tasks finished!': completed ? completed + ' task finished!' : ''} `;
+            const incompletedSentence = `${incompleted && incompleted !== 1 ? `${incompleted  } tasks to do. ` : incompleted ? `${incompleted  } task to do. ` : '' }`
+            const completedSentence = `${completed && completed !== 1 ? `${completed  } tasks finished!`: completed ? `${completed  } task finished!` : ''} `;
 
             review.textContent = incompletedSentence + completedSentence
             card.appendChild(title);
             card.appendChild(review);
             content.appendChild(card)
-            return
+            
         });
     }
 
@@ -224,7 +228,7 @@ class ProjectContainer {
         const project = new Project(name);
         this.projectList.push(project);
         this.storeProjects()
-        return 
+         
     }
 
     addTaskToProject(projectName, title, description, importance, date){
@@ -248,11 +252,6 @@ class ProjectContainer {
         } else {
             console.error('Project not found.');
         }
-    }
-    
-    checkIfData(){
-        checkGetStored()
-        this.allTaskManager.refresh()
     }
 }
 

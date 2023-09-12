@@ -1,8 +1,9 @@
+/* eslint-disable import/no-cycle */
 import clearContentMake from "../clearContentMake";
 import { formLabelInput, createOption, submitFunction } from "./addNewFunctions";
 import { projectContainer } from "../../task_controls/taskManagers";
 
-export const addNew = function () {
+export default function(){
     // Checking if in project tab
     const projectH1 = document.querySelector('#project-showing')
 
