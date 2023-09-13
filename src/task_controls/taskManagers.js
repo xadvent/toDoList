@@ -174,6 +174,7 @@ export class Project {
         
         return project;
     }
+
 }
 
 class ProjectContainer {
@@ -253,6 +254,14 @@ class ProjectContainer {
             console.error('Project not found.');
         }
     }
+
+    // getAllWeekly(){
+    //     const allWeekly = []
+    //     this.projectList.forEach(project =>{
+    //         if (project.date.split)
+    //         allWeekly.push()
+    //     })
+    // }
 }
 
 
