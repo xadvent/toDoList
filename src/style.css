@@ -39,32 +39,33 @@
         filter: blur(2px);
     }
 
-    80% {
-        filter: blur(0);
-    }
-
     100% {
         opacity: 1;
         transform: translateX(0px);
+        filter: blur(0);
     }
 }
 
 @keyframes logo-build {
     0% {
         opacity: 0;
+        filter: blur(1px);
         column-gap: 50px;
         transform: rotate(0deg);
     }
 
+    10% {
+        filter: blur(0);
+    }
     50% {
         gap: 2px;
-        opacity: 0.8;
         scale: 0.8;
+        opacity: 1;
     }
 
     100% {
-        opacity: 1;
         gap: 10px;
+        scale: 1;
         transform: rotate(405deg);
     }
 }
@@ -131,7 +132,7 @@ a {
     font-size: 40px;
     cursor: default;
     transition: all 1s;
-    animation: slide-right 1s ease;
+    animation: slide-right 1.5s ease;
 }
 
 #header h1:hover>span {
@@ -215,7 +216,7 @@ a {
     grid-template-columns: 1fr 2fr;
     align-items: center;
     column-gap: 10px;
-    animation: slide-right 1s ease-in-out;
+    animation: slide-right 1.5s ease;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -245,6 +246,7 @@ a {
 #add-button {
     justify-self: center;
     margin-bottom: 40px;
+    order: 20;
 }
 
 #new-project-button:hover {
@@ -269,6 +271,9 @@ a {
 #add-button:hover>#plus,
 #new-project-button:hover>#plus{
     filter: invert(0%);
+}
+#overview {
+    margin-top: 10px;
 }
 
 #add-button,
@@ -325,10 +330,11 @@ a {
     background-color: var(--medium-priority);
 }
 
-.new-form-tab h1 {
+#content.new-form-tab h1 {
     color: var(--highlight);
 }
-.add-project-tab h1 {
+
+#content.add-project-tab h1 {
     color: var(--high-priority);
 }
 
@@ -343,7 +349,8 @@ a {
     animation: slide-down 1s ease;
 }
 
-.overview-tab {
+.overview-tab,
+.weekly-tab {
     display: grid;
     grid-auto-rows: minmax(1fr, 100px);
     align-content: start;
@@ -353,13 +360,16 @@ a {
     background-color: var(--main);
 }
 
-.overview-tab .task-item {
+#content .task-item {
     position: relative;
     cursor: pointer;
     border: none;
     height: 100px;
     border-radius: 20px;
     padding: 5px 20px;
+    max-width: 95%;
+    min-width: 95%;
+    justify-self: center;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 80px;
@@ -391,18 +401,18 @@ a {
     order: -1;
 }
 
-.overview-tab .title {
+#content .title {
     align-self: center;
     justify-self: center;
+    text-align: center;
     font-size: 20px;
     gap: 20%;
     display: flex;
     flex-direction: column;
     grid-column: 1;
-    min-width: max-content;
 }
 
-.overview-tab .description {
+#content .description {
     align-self: center;
     width: 100%;
     text-overflow: clip;
@@ -413,14 +423,14 @@ a {
     overflow: hidden;
 }
 
-.overview-tab .date {
+#content .date {
     text-align: center;
 }
 
 #content .finished {
     color: lightgray;
     background-color: darkgrey;
-    order: 10;
+    order: 100;
 }
 
 #content .finished>h3 {
@@ -484,9 +494,10 @@ select:hover {
     opacity: 1;
 }
 
-.expanded>.description {
+#content .expanded>.description {
     white-space: normal;
-    width: 100%;
+    word-wrap: normal;
+    height: auto;
     padding-left: 0px;
     padding-right: 0px;
 }
@@ -525,8 +536,10 @@ select:hover {
 
 #content .expanded {
     height: 350px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 1fr 1fr;
     padding-top: 10px;
     padding-bottom: 10px;
     gap: 5px;
@@ -540,7 +553,7 @@ select:hover {
     cursor: pointer;
 }
 
-#content .expanded>.description {
+#content .expanded .description {
     text-align: center;
     flex: 1;
 }
@@ -579,9 +592,11 @@ select:hover {
     cursor: pointer;
 }
 
-.overview-tab h1{
+#content h1{
     order: -20;
-    color: white;
+    color: var(--secondary);
+    cursor: default;
+    margin-top: 5px;
 }
 
 .hidden {
