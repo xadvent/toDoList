@@ -48,11 +48,6 @@ export const overview = function () {
     
 }
 
-export const thisWeek = function () {
-    const content = clearContentMake('week')
-    content.appendChild(createNewButton())
-}
-
 export const month = function () {
     const content = clearContentMake('month')
     content.appendChild(createNewButton())

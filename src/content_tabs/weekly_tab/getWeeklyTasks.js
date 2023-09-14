@@ -26,5 +26,5 @@ const getListForWeek = function(projectList){
 
 export default function(projectList){
     const alltasks = getListForWeek(projectList)
-    console.log(alltasks)
+    return alltasks
 }

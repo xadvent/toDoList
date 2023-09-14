@@ -10,7 +10,6 @@ const getTaskByTitle = (current) => {
     const mainTask = projectContainer.allTaskManager.getTask(infoTitle)
 
     const taskProject = projectContainer.findProjectByTask(infoTitle)
-    console.log(infoTitle, mainTask, taskProject)
 
     return {
         mainTask,
