@@ -21,11 +21,13 @@
         transform: translateY(0);
     }
 }
-@keyframes slide-down-finished{
+
+@keyframes slide-down-finished {
     0% {
         opacity: 1;
         transform: translateY(0px)
     }
+
     100% {
         opacity: 0;
         transform: translateY(15px);
@@ -57,6 +59,7 @@
     10% {
         filter: blur(0);
     }
+
     50% {
         gap: 2px;
         scale: 0.8;
@@ -65,6 +68,31 @@
 
     100% {
         gap: 10px;
+        scale: 1;
+        transform: rotate(405deg);
+    }
+}
+
+@keyframes logo-build-small {
+    0% {
+        opacity: 0;
+        filter: blur(1px);
+        column-gap: 50px;
+        transform: rotate(0deg);
+    }
+
+    10% {
+        filter: blur(0);
+    }
+
+    50% {
+        gap: 2px;
+        scale: 0.8;
+        opacity: 1;
+    }
+
+    100% {
+        gap: 5px;
         scale: 1;
         transform: rotate(405deg);
     }
@@ -238,7 +266,8 @@ a {
     color: var(--main);
     cursor: pointer;
 }
-.add-project-tab#form-submit:hover{
+
+.add-project-tab#form-submit:hover {
     background-color: var(--high-priority);
     color: var(white);
 }
@@ -263,15 +292,16 @@ a {
     margin-bottom: 15px;
 }
 
-#sidebar #add-project:hover{
+#sidebar #add-project:hover {
     background-color: var(--high-priority);
 }
 
 #sidebar button:hover>.nav-image,
 #add-button:hover>#plus,
-#new-project-button:hover>#plus{
+#new-project-button:hover>#plus {
     filter: invert(0%);
 }
+
 #overview {
     margin-top: 10px;
 }
@@ -381,8 +411,9 @@ a {
 .task-item>h3 {
     pointer-events: none;
 }
-.expanded:hover >h3,
-.expanded:hover > button {
+
+.expanded:hover>h3,
+.expanded:hover>button {
     animation: slide-right 1.5s ease;
 }
 
@@ -501,6 +532,7 @@ select:hover {
     padding-left: 0px;
     padding-right: 0px;
 }
+
 .button-container {
     display: flex;
     flex-direction: column;
@@ -587,13 +619,14 @@ select:hover {
     border-radius: 10px;
     transition: all 0.5s;
 }
+
 .project-card:hover {
     background-color: #ee2f2f;
     padding-left: 5vw;
     cursor: pointer;
 }
 
-#content h1{
+#content h1 {
     order: -20;
     color: var(--secondary);
     cursor: default;
@@ -606,5 +639,33 @@ select:hover {
 }
 
 #project-showing::before {
-    content:"Project: ";
+    content: "Project: ";
+}
+
+@media (max-width: 450px) {
+    #page {
+        grid-template-columns: 60px 1fr;
+        padding-left: 5px;
+    }
+
+    .nav-button>p {
+        visibility: hidden;
+        display: none;
+    }
+
+    .top-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    #header {
+        grid-template-columns: minmax(60px, 1fr) 4fr;
+    }
+
+    #top-logo {
+        height: 40px;
+        width: 40px;
+        gap: 5px;
+        animation: logo-build-small 1.5s ease;
+    }
 }
