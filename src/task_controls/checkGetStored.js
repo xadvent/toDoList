@@ -28,12 +28,12 @@ export default function(){
         loadProjectsFromLocalStorage()
     } else {
         projectContainer.addProject('Homework')
-        projectContainer.addTaskToProject('Homework', 'Daily Assignment', 'Do the daily assignment for whatever class it is you\'re taking right now. Everybody knows that it is dumb, but what can you do.', 'high-priority', 'Never')
+        projectContainer.addTaskToProject('Homework', 'Daily Assignment', 'Finish the daily assignment!', 'high-priority', 'Never')
         const message = 'Finish my paper regarding the legality of cloning T-rex\'s.'
         projectContainer.addTaskToProject('Homework', "Paper", message, 'high-priority', 'Never')
 
         projectContainer.addProject('Writing pages')
-        projectContainer.addTaskToProject('Writing pages', 'Script One', 'Write hella pages of script 4 and come up with a good ending.', 'medium-priority', '2023-08-30')
-        projectContainer.addTaskToProject('Writing pages', 'Script Two', 'Finish Script 5 by the deadline.', 'medium-priority', '2023-09-20')
+        projectContainer.addTaskToProject('Writing pages', 'Script One', 'Write hella pages of script 4 and come up with a good ending.', 'medium-priority', '2024-08-30')
+        projectContainer.addTaskToProject('Writing pages', 'Script Two', 'Finish Script 5 by the deadline.', 'medium-priority', '2024-09-20')
     }
 }
